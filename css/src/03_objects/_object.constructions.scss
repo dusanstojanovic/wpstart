@@ -1,0 +1,107 @@
+/*----------------------------------------------------------------*\
+    #Misc constructions
+\*----------------------------------------------------------------*/
+/*------------------------------------*\
+    #FLEXBOX center v and h
+    - needs height
+\*------------------------------------*/
+.o-centervh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*------------------------------------*\
+    #This or this
+\*------------------------------------*/
+.o-this-or-this {
+    display: flex;
+    flex-direction: column;
+
+    @include bp(bp768) {
+        flex-direction: row;
+    }
+
+    &__this {
+        display: flex;
+        flex: 1 1 50%;
+        align-items: center;
+
+        > :first-child  {margin-top: 0;}
+        > :last-child   {margin-bottom: 0;}
+    }
+    &__or {
+        display: flex;
+        flex: 0 1 auto;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
+/*------------------------------------*\
+    #o-subscribe element
+\*------------------------------------*/
+.o-subscribe {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__main {
+        flex: 10 0 280px;
+
+        > :first-child  {margin-top: 0;}
+        > :last-child   {margin-bottom: 0;}
+    }
+
+    &__sec {
+        flex: 1 0 auto;
+        text-align: center;
+    }
+}
+
+
+
+/*---------------------------------------
+    #flag/media objects
+---------------------------------------*/
+.o-card {
+    --o-card-margin: 20px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    &__img {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        margin-right: var(--o-card-margin);
+    }
+
+    &__body {
+        flex: 1 1 auto;
+
+        > :first-child  {margin-top: 0;}
+        > :last-child   {margin-bottom: 0;}
+
+        > div {
+            > :first-child  {margin-top: 0;}
+            > :last-child   {margin-bottom: 0;}
+        }
+    }
+
+    &__aside {
+        display: flex;
+        align-items: center;
+        flex: 0 1 auto;
+        padding-left: var(--o-card-margin);
+    }
+
+    /* media element */
+    &--media {
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,37 @@
+/*------------------------------------*\
+    #Buttons
+\*------------------------------------*/
+/**
+ *  buttons
+ */
+.o-btn {
+    display: inline-block;
+    padding: 18px;
+    border: var(--btn-border-width) solid var(--c-brand);
+    background: var(--c-brand);
+    font-size: 13px;
+    color: var(--c-grey--dark);
+    text-transform: uppercase;
+    line-height: normal;
+    cursor: pointer;
+
+    .o-icon {
+        margin-bottom: -10px;
+        top: -0.2em;
+        margin-right: 8px;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
+    &:focus {
+        outline: none;
+    }
+    /* block button */
+    &--block {
+        display    : block;
+        text-align : center;
+        width: 100%;
+    }
+}

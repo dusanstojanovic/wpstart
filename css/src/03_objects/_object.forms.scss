@@ -1,0 +1,181 @@
+/*------------------------------------*\
+    #Forms styles
+    (see the buttons vars)
+    dependency: lost grid
+\*------------------------------------*/
+
+.o-form {
+
+    /* group */
+    &__group {
+        display: block;
+        font-size: 0;
+        clear: both;
+
+        /* inline */
+        &--inline {
+            lost-center: 100%;
+        }
+    }
+
+    /*------------------------------------*\
+        #label
+    \*------------------------------------*/
+    &__label {
+        display   : block;
+        font-size : var(--base-font-size);
+        padding: 0 0 var(--form-padding);
+
+        /*------------------------------------*\
+            #inline label
+        \*------------------------------------*/
+        @include bp(bp480) {
+            &--inline {
+                lost-column: 1/4;
+                text-align: right;
+                /*padding: var(--form-padding) 0;*/
+                padding-top: calc(var(--form-padding) - 2 * var(--form-border-width));
+                padding-bottom: calc(var(--form-padding) - 2 * var(--form-border-width));
+            }
+        }
+    }
+    /*------------------------------------*\
+        #for inline forms
+    \*------------------------------------*/
+    &__controls {
+
+        @include bp(bp480) {
+            lost-column: 3/4;
+        }
+    }
+
+
+
+    /*------------------------------------*\
+        #form controls
+    \*------------------------------------*/
+    &__control {
+        /*width       : 100%;*/
+        appearance    : none;
+        background    : #fff;
+        border        : var(--form-border-width) solid var(--c-grey);
+        border-radius : var(--base-border-radius);
+        box-sizing    : border-box;
+        font-size     : var(--base-font-size);
+        line-height   : normal;
+        margin-bottom : var(--form-padding);
+        margin-right  : var(--form-padding);
+        padding       : var(--form-padding);
+        transition    : var(--base-transition-time);
+
+        &--block {
+            width: 100%;
+            display: block;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        /*------------------------------------*\
+            #radios & checkboxes
+        \*------------------------------------*/
+        @at-root label#{&} {
+            position     : relative;
+            display      : inline-block;
+            padding-left : 20px;
+            width        : auto;
+            border-color : transparent;
+            background   : transparent;
+
+            input {
+                position: absolute;
+                top: var(--form-padding);
+                left: 0;
+                width: 1rem;
+                height: 1rem;
+
+                &[type="checkbox"] {
+                    top: calc(var(--form-padding) + 1);
+                }
+            }
+            &--block {
+                width: 100%;
+                display: block;
+            }
+
+            &.o-form__control--block {
+                padding-bottom: 0;
+                margin-bottom: 0;
+
+                &:last-child {
+                    margin-bottom: calc(var(--base-spacing-unit) / 2);
+                }
+            }
+        }
+
+        /* on focus */
+        &:focus {
+            border-color : var(--c-grey);
+            outline      : 0;
+        }
+
+        /* select */
+        @at-root select#{&} {
+            padding-right: 32px !important;
+            background: #fff url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDIwIDUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPjwvdGl0bGU+PGRlc2M+PC9kZXNjPjxwYXRoIGZpbGw9IiNEOEQ4RDgiIGQ9Ik00LjU1MSA0Ljc5NGwtNC41NTEtNC43OTVoOC45MzZ6Ii8+PC9zdmc+") 100% 50% no-repeat;
+        }
+
+        /* search */
+        &[type="search"] {
+            box-sizing: border-box;
+        }
+
+        /* sizes */
+        &--sm {
+            font-size      : calc(var(--base-font-size) / var(--form-sm-divisor));
+            padding-bottom : calc(var(--form-padding) / var(--form-sm-divisor));
+            padding-top    : calc(var(--form-padding) / var(--form-sm-divisor));
+        }
+        &--lg {
+            padding   : calc(var(--form-padding) * var(--form-lg-multiplier));
+        }
+        &--block {
+            display: block;
+        }
+
+
+        /* placeholder text */
+        &::-moz-placeholder {
+            color   : var(--c-grey);
+            opacity : 1;
+        }
+        &:-ms-input-placeholder {
+            color   : var(--c-grey);
+        }
+        &::-webkit-input-placeholder {
+            color   : var(--c-grey);
+        }
+    }
+
+
+
+    /* form hint text */
+    &__hint {
+        font-size: 12px;
+        margin-bottom : var(--form-padding);
+    }
+
+}
+
+@-moz-document url-prefix() {
+    select.o-form__control {
+        padding-top: calc(var(--form-padding) - var(--form-border-width));
+        padding-bottom: calc(var(--form-padding) - var(--form-border-width));
+    }
+}
+/* Unstyle the caret on `<select>`s in IE10+ */
+::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}

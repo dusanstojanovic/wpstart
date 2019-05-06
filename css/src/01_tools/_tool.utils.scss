@@ -1,0 +1,368 @@
+/*------------------------------------*\
+    #Margins
+\*------------------------------------*/
+/* margin reset */
+.u-mrg--reset {
+    > :first-child {
+        margin-top: 0;
+    }
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+.u-mrg--1\/2 {
+    margin: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-mrg--t\/2 {
+    margin-top: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-mrg--r\/2 {
+    margin-right: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-mrg--b\/2 {
+    margin-bottom: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-mrg--l\/2 {
+    margin-left: calc(var(--base-spacing-unit) / 2) !important;
+}
+
+/* margin increments */
+@for $i from 0 through 4 {
+    .u-mrg--x#{$i} {
+        margin: calc(var(--base-spacing-unit) *#{$i}) !important;
+    }
+    .u-mrg--tx#{$i} {
+        margin-top: calc(var(--base-spacing-unit) *#{$i}) !important;
+    }
+    .u-mrg--bx#{$i} {
+        margin-bottom: calc(var(--base-spacing-unit) *#{$i}) !important;
+    }
+    .u-mrg--lx#{$i} {
+        margin-left: calc(var(--base-spacing-unit) *#{$i}) !important;
+    }
+    .u-mrg--rx#{$i} {
+        margin-right: calc(var(--base-spacing-unit) *#{$i}) !important;
+    }
+}
+
+/*------------------------------------*\
+    #Paddings
+\*------------------------------------*/
+.u-pdn--1\/2 {
+    padding: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-pdn--t\/2 {
+    padding-top: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-pdn--r\/2 {
+    padding-right: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-pdn--b\/2 {
+    padding-bottom: calc(var(--base-spacing-unit) / 2) !important;
+}
+.u-pdn--l\/2 {
+    padding-left: calc(var(--base-spacing-unit) / 2) !important;
+}
+
+/* padding increments */
+@for $i from 0 through 4 {
+    .u-pdn--x#{$i} {
+        padding: calc(var(--base-spacing-unit) * #{$i}) !important;
+    }
+    .u-pdn--tx#{$i} {
+        padding-top: calc(var(--base-spacing-unit) * #{$i}) !important;
+    }
+    .u-pdn--bx#{$i} {
+        padding-bottom: calc(var(--base-spacing-unit) * #{$i}) !important;
+    }
+    .u-pdn--lx#{$i} {
+        padding-left: calc(var(--base-spacing-unit) * #{$i}) !important;
+    }
+    .u-pdn--rx#{$i} {
+        padding-right: calc(var(--base-spacing-unit) * #{$i}) !important;
+    }
+}
+
+/*------------------------------------*\
+    #Text utilities
+\*------------------------------------*/
+.u-txt--center {
+    text-align: center !important;
+}
+.u-txt--left {
+    text-align: left !important;
+}
+.u-txt--right {
+    text-align: right !important;
+}
+.u-txt--break {
+    word-wrap: break-word !important;
+}
+.u-txt--nowrap {
+    white-space: nowrap !important;
+}
+/* text transformations */
+.u-txt--up {
+    text-transform: uppercase !important;
+}
+.u-txt--low {
+    text-transform: lowercase !important;
+}
+.u-txt--ita {
+    font-style: italic !important;
+}
+/* text line heights */
+.u-txt--lh1 {
+    line-height: 1 !important;
+}
+/* truncate text */
+.u-txt--truncate {
+    max-width: 100%;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+}
+/* hyphenate text */
+.u-txt--hyphenate {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+/* text sizes */
+.u-txt--14 {
+    font-size: 14px !important;
+}
+.u-txt--18 {
+    font-size: 18px !important;
+}
+.u-txt--20 {
+    font-size: 20px !important;
+}
+.u-txt--micro {
+    font-size: 11px;
+}
+.u-txt--milli {
+    font-size: 12px;
+}
+.u-txt--mini {
+    font-size: 13px;
+}
+.u-txt--default {
+    font-size: var(--base-font-size);
+}
+.u-txt--deca {
+    font-size: calc(2 * var(--base-font-size));
+}
+.u-txt--hecto {
+    font-size: calc(3 * var(--base-font-size));
+}
+.u-txt--kilo {
+    font-size: calc(4 * var(--base-font-size));
+}
+.u-txt--mega {
+    font-size: calc(5 * var(--base-font-size));
+}
+.u-txt--giga {
+    font-size: calc(6 * var(--base-font-size));
+}
+.u-txt--tera {
+    font-size: calc(7 * var(--base-font-size));
+}
+.u-txt--peta {
+    font-size: calc(8 * var(--base-font-size));
+}
+/* text font weights */
+.u-txt--thin {
+    font-weight: 300 !important;
+}
+.u-txt--normal {
+    font-weight: 400 !important;
+}
+.u-txt--thick {
+    font-weight: 600 !important;
+}
+.u-txt--bold {
+    font-weight: 700 !important;
+}
+.u-txt--boldest {
+    font-weight: 800 !important;
+}
+/* text fonts */
+.u-txt--sans {
+    font-family: var(--font-stack--sans) !important;
+}
+.u-txt--sans-alt {
+    font-family: var(--font-stack--sans-alt) !important;
+}
+.u-txt--serif {
+    font-family: var(--font-stack--serif) !important;
+}
+.u-txt--mono {
+    font-family: var(--font-stack--mono) !important;
+}
+
+/* text colors */
+.u-txt--black {
+    color: #000 !important;
+}
+.u-txt--white {
+    color: #fff !important;
+}
+
+/*------------------------------------*\
+    #Display-type utilities
+\*------------------------------------*/
+.u-disp--b {
+    display: block !important;
+}
+.u-disp--i {
+    display: inline !important;
+}
+.u-disp--ib {
+    display: inline-block !important;
+    max-width: 100% !important;
+}
+.u-disp--t {
+    display: table !important;
+}
+.u-disp--tc {
+    display: table-cell !important;
+}
+.u-disp--tr {
+    display: table-row !important;
+}
+.u-disp--n {
+    display: none !important;
+}
+
+.u-height--100p {
+    height: 100%;
+}
+
+/*------------------------------------*\
+    #Screen reader visible only, hidden on screens
+\*------------------------------------*/
+.u-srt {
+    position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+/*------------------------------------*\
+    #Contain floats (clearfix)
+\*------------------------------------*/
+.u-cf:before,
+.u-cf:after {
+    content: ' ';
+    display: table;
+}
+.u-cf:after {
+    clear: both;
+}
+/* with no overflow clipping*/
+.u-cf--ov {
+    display: table-cell !important;
+    width: 10000px !important;
+}
+/* clear elements */
+.u-clear {
+    clear: both !important;
+}
+
+/*------------------------------------*\
+    #Float utilities
+\*------------------------------------*/
+.u-fl--left {
+    float: left !important;
+}
+.u-fl--right {
+    float: right !important;
+}
+.u-fl--none {
+    float: none !important;
+}
+
+/*------------------------------------*\
+    #Overflow utilities
+\*------------------------------------*/
+.u-ovf--h {
+    overflow: hidden !important;
+}
+.u-ovf--v {
+    overflow: visible !important;
+}
+
+/*------------------------------------*\
+    #Positional utilities
+\*------------------------------------*/
+.u-pos--absolute {
+    position: absolute !important;
+}
+.u-pos--fixed {
+    position: fixed !important;
+    backface-visibility: hidden;
+}
+.u-pos--relative {
+    position: relative !important;
+}
+.u-pos--static {
+    position: static !important;
+}
+.u-pos--sticky {
+    position: sticky !important;
+}
+.u-pos--overlay {
+    position: absolute !important;
+    margin: auto !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/*------------------------------------*\
+    #Visual utilities
+\*------------------------------------*/
+.u-rounded {
+    border-radius: var(--base-border-radius);
+}
+.u-circle {
+    border-radius: 50%;
+}
+.u-pill {
+    border-radius: 50em;
+}
+/* backgrounds */
+.u-bgc--transp {
+    background-color: transparent !important;
+}
+.u-bgi--none {
+    background-image: none !important;
+}
+.u-bg--none {
+    background: transparent none !important;
+}
+.u-muted {
+    opacity: 0.4 !important;
+}
+
+/*------------------------------------*\
+    ##Other utilities
+\*------------------------------------*/
+/* no animation flicker in webkit (future will-change)*/
+.u-noflicker {
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+}
+/* click effect */
+.u-click {
+    position: relative;
+    top: 1px;
+}

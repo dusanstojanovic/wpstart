@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    #All your headings are belong to us
+\*------------------------------------*/
+.c-h1 {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+/*------------------------------------*\
+    #texts
+\*------------------------------------*/
+.c-text {
+    &--introtop {
+        position: relative;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: var(--c-grey);
+        margin-bottom: 3vh;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -515px;
+            width: 500px;
+            height: 1px;
+            background: var(--c-grey--transparent);
+        }
+
+        &--white {
+            color: #fff;
+            opacity: 0.5;
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    &--introbottom {
+        color: var(--c-grey);
+        margin-top: 3vh;
+    }
+}

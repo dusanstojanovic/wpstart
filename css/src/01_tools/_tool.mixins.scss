@@ -1,0 +1,172 @@
+//  Breakpoints Mixin
+//  usage: @include bp(bp320)  {...}
+//  ------------------------------------------------------------
+
+/*---------------------------------------
+    Breakpoints
+---------------------------------------*/
+// $breakpoints: (
+//     "bp320" : 320px,
+//     "bp480" : 480px,
+//     "bp768" : 768px,
+//     "bp1024": 1024px,
+//     "bp1280": 1280px,
+// );
+
+@mixin bp($breakpoint) {
+    $value: map-get($breakpoints, $breakpoint); //  see _settings.vars.scss
+    @if $value != null {
+        @media (min-width: $value) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from '#{$breakpoint}'. "
+        + "Please make sure it is defined in '$breakpoints' map.";
+    }
+}
+
+//  Line-On-Sides Headers
+//  http://css-tricks.com/line-on-sides-headers/
+//  <h1 class="sidelines"><span class="sidelines__text">Heading</span></h1>
+//  usage: @include sidelines(center, 1000px, 1px, #333, 20px, ".sidelines__text", '/path/to/ornament.png');
+//         @include sidelines(orientation, width, height, bgcolor, margin, innertext, '/path/to/ornament.png');
+//  ------------------------------------------------------------
+@mixin sidelines(
+    $orientation: center,
+    $width: 1600px,
+    $height: 1px,
+    $bgcolor: $c--grey-dark,
+    $margin: 1.25rem,
+    $innertext: '.sidelines__text',
+    $bgimg: ''
+) {
+    overflow: hidden;
+    line-height: normal;
+    #{unquote($innertext)} {
+        display: inline-block;
+        position: relative;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            margin-top: ceil($height/-2);
+            width: $width;
+            height: $height;
+            background-color: $bgcolor;
+            @if $bgimg != '' {
+                background-image: url($bgimg);
+                background-position: 50% 50%;
+            }
+        }
+    }
+    @if $orientation == 'center' {
+        text-align: center;
+        #{unquote($innertext)} {
+            text-align: center;
+            &:before {
+                right: 100%;
+                margin-right: $margin;
+            }
+            &:after {
+                left: 100%;
+                margin-left: $margin;
+            }
+        }
+    }
+    @if $orientation == 'left' {
+        text-align: left;
+        #{unquote($innertext)} {
+            text-align: left;
+            &:before {
+                display: none;
+            }
+            &:after {
+                left: 100%;
+                margin-left: $margin;
+            }
+        }
+    }
+    @if $orientation == 'right' {
+        text-align: right;
+        #{unquote($innertext)} {
+            text-align: right;
+            &:before {
+                right: 100%;
+                margin-right: $margin;
+            }
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+// Responsive txt
+//  usage: @include resptxt(small_size, small_bp, big_size, big_bp);
+//         @include resptxt(16px, 320px, 84px, 1280px);
+//------------------------------------------------------------
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+@mixin resptxt($size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
+    $diff-size: strip-unit($size-big - $size-sm);
+    $diff-bp: strip-unit($bp-lg - $bp-sm);
+
+    font-size: calc(
+        #{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp})
+    );
+
+    @media screen and (max-width: $bp-sm) {
+        font-size: $size-sm;
+    }
+    @media screen and (min-width: $bp-lg) {
+        font-size: $size-big;
+    }
+}
+
+//  Squircle mixin
+//  usage: .class { @include squircle(250px, #12A266); }
+//         @include sidelines(orientation, width, height, bgcolor, margin, innertext, '/path/to/ornament.png');
+//  ------------------------------------------------------------
+@mixin squircle($s: 100, $c: $main) {
+    $s: $s + 0px;
+    width: $s;
+    height: $s;
+    background: $c;
+    border-radius: $s * 0.32;
+    position: relative;
+    text-align: center;
+    line-height: $s;
+    font-size: $s / 2;
+    color: darken(saturate($c, 20%), 40);
+    vertical-align: middle;
+    display: inline-block;
+
+    * {
+        line-height: $s !important;
+        font-size: $s / 2 !important;
+        vertical-align: middle !important;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: $c;
+        // z-index: -1;
+        border-radius: 100%;
+        transform: scaleX(1.3) scaleY(1.075);
+        clip-path: polygon(28% 0, 72% 0, 72% 100%, 28% 100%);
+    }
+    &:after {
+        transform: scaleY(1.3) scaleX(1.075) rotate(90deg);
+    }
+}

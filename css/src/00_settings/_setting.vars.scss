@@ -1,0 +1,101 @@
+/*------------------------------------*\
+    #Basic values
+\*------------------------------------*/
+:root {
+    --base-font-size: 16px;
+    --base-line-height: 1.5;
+    --base-spacing-unit: 20px;
+    --base-border-radius: 3px;
+    --base-transition-time: 0.075s;
+    /* buttons and forms vars */
+    --form-border-width: 1px;
+    --form-padding: 18px;
+    --form-sm-divisor: 1.6;
+    --form-lg-multiplier: 2.4;
+
+    --btn-border-width: 2px;
+    --btn-padding-v: 10px;
+    --btn-padding-h: 24px;
+    --btn-sm-divisor: 1.6;
+    --btn-lg-multiplier: 2.4;
+
+    /*---------------------------------------
+        Colors
+    ---------------------------------------*/
+    --c-brand: #da251d;
+    --c-brand-sec: #ff6f61;
+    // --c-brand-sec: #ff04a7;
+
+    --c-grey--dark: #091e2c;
+    --c-grey: #a1aeb7;
+    --c-grey--light: #f5f8fb;
+    --c-grey--transparent: rgba(9, 30, 44, 0.08);
+
+    /*Usual colors*/
+    --c-white: #fff;
+    --c-black: #000;
+
+    --c-blue: #60829a;
+
+    --c-green: #3cbc21;
+    --c-red: #f77150;
+
+    --c-orange: #ffc303;
+    --c-yellow: #ffec04;
+
+    /*Link color*/
+    --c-link: #60829a;
+    --c-link-hover: #da251d;
+
+    /*------------------------------------*\
+        #Fonts
+    \*------------------------------------*/
+    --font-stack--sans: 'Work Sans', sans-serif;
+    --font-stack--sans-alt: 'Work Sans', sans-serif;
+    --font-stack--serif: Georgia, 'Times New Roman', Times, serif;
+    --font-stack--mono: Monaco, Consolas, 'Lucida Console', monospace;
+
+    /*------------------------------------*\
+        #Z-indexes
+    \*------------------------------------*/
+    --z-everest: 100;
+    --z-alps: 50;
+    --z-hill: 10;
+    --z-beach: 1;
+    --z-sea: 0;
+    --z-deadsea: -1;
+}
+
+/*---------------------------------------
+    Breakpoints
+---------------------------------------*/
+$breakpoints: (
+    'bp320': 320px,
+    'bp480': 480px,
+    'bp768': 768px,
+    'bp1024': 1024px,
+    'bp1280': 1280px,
+    'bp1920': 1920px,
+);
+
+/*---------------------------------------
+    #Fonts imports
+---------------------------------------*/
+@font-face {
+    font-family: 'Work Sans';
+    src: url('fonts/worksans-regular-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Work Sans';
+    src: url('fonts/worksans-semibold-webfont.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Work Sans';
+    src: url('fonts/worksans-bold-webfont.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}

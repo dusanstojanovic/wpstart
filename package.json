@@ -1,0 +1,38 @@
+{
+    "name": "wptest",
+    "version": "1.0.0",
+    "description": "WordPress Theme",
+    "dependencies": {
+        "browser-sync": "^2.26.5",
+        "browser-sync-webpack-plugin": "^2.2.2",
+        "lost": "^8.3.1",
+        "svg-spritemap-webpack-plugin": "^3.3.0",
+        "jquery-bridget": "^2.0.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.4.4",
+        "@babel/core": "^7.4.4",
+        "@babel/preset-env": "^7.4.4",
+        "babel-loader": "^8.0.5",
+        "css-loader": "^2.1.1",
+        "mini-css-extract-plugin": "^0.6.0",
+        "node-sass": "^4.12.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.6.0",
+        "sass-loader": "^7.1.0",
+        "uglifyjs-webpack-plugin": "^2.1.2",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.30.0",
+        "webpack-build-notifier": "^1.0.2",
+        "webpack-cli": "^3.3.2"
+    },
+    "scripts": {
+        "build": "webpack --mode development",
+        "dist": "webpack --mode production",
+        "watch": "webpack --watch --mode development"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
