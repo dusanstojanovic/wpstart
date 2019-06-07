@@ -17,7 +17,6 @@ module.exports = {
     externals: {
         jquery: 'jQuery',
     },
-    // Source Maps for css (doesnt work properly)
     devtool: 'source-map',
     module: {
         rules: [
@@ -25,11 +24,21 @@ module.exports = {
                 test: /\.woff(2)?$/,
                 use: {
                     loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: '[name].[ext]',
+                        outputPath: '../../fonts/',
+                    },
                 },
             },
             {
                 test: /\.(png|jpg|svg)$/,
                 loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: '[name].[ext]',
+                    outputPath: '../../img',
+                },
             },
             {
                 test: /\.js$/,
@@ -54,7 +63,7 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            ident: 'postcss',
+                            sourceMap: true,
                             plugins: [
                                 require('lost'),
                                 require('autoprefixer')({
