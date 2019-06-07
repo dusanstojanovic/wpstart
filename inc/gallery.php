@@ -20,10 +20,10 @@ function my_post_gallery( $output, $attr ) {
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post->ID,
-        'itemtag'    => 'div',
-        'captiontag' => 'div',
+        'itemtag'    => 'figure',
+        'captiontag' => 'figcaption',
         'columns'    => 3,
-        'size'       => 'gallery-thumb',
+        'size'       => 'thumb_gallery',
         'include'    => '',
         'exclude'    => ''
     ), $attr ) );
@@ -75,16 +75,17 @@ function my_post_gallery( $output, $attr ) {
 
     // Filter gallery CSS
     $output = apply_filters( 'gallery_style', "
-        <!-- see gallery_shortcode() in wp-includes/media.php -->
         <div class=\"c-galleryholder\">
-        <div class=\"c-gallery__prev\"></div>
-        <div class=\"c-gallery__next\"></div>
+        <div class=\"c-gallery__prev\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"34\" height=\"7\" viewBox=\"0 0 34 7\"><path d=\"M3.614 7L0 3.5 3.614 0l.707.683-2.36 2.336L34 3v1H2l2.321 2.317z\"/></svg></div>
+        <div class=\"c-gallery__next\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"34\" height=\"7\" viewBox=\"0 0 34 7\"><path d=\"M30.386 7l-.707-.683L32 4H0V3l32.039.019-2.36-2.336.707-.683L34 3.5z\"/></svg></div>
         <div class=\"c-gallery  js-gallery\">\n
             <div class=\"swiper-wrapper\">\n"
     );
 
     // Iterate through the attachments in this gallery instance
     $i = 0;
+    $digits = 5;
+    $index = rand(pow(10, $digits-1), pow(10, $digits)-1);
     foreach ( $attachments as $id => $attachment ) {
 
         // Attachment link
@@ -94,6 +95,7 @@ function my_post_gallery( $output, $attr ) {
         $output .= "<{$itemtag} class='c-gallery__item  swiper-slide'>\n";
 
         // icontag
+        $link = str_replace('<a','   <a data-fancybox="gallery-'.$index.'" data-caption="' . wptexturize($attachment->post_excerpt) . '"   ',$link);
         $output .= "$link";
 
         // caption
@@ -112,9 +114,11 @@ function my_post_gallery( $output, $attr ) {
 
     // End gallery output
     $output .= "
-    </div><!--c-gallery-->\n
-    </div><!--swiper-wrapper-->\n
-    <div class=\"swiper-pagination\"></div></div>";
+    </div>\n
+    </div>\n
+    <div class=\"swiper-pagination\">\n
+    </div>\n
+    </div>";
 
     return $output;
 

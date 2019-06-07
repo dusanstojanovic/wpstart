@@ -1,34 +1,58 @@
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package wpstart
+ */
+
+?>
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/modernizr-custom.js"></script>
-    <?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wpstart' ); ?></a>
 
-<header>
-    <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-        <?php include "img/logo.svg"; ?>
-    </a>
-    <nav role="navigation">
-        <?php
-            wp_nav_menu(
-                array(
-                    'container' => '',
-                    'container_class' => '',
-                    'theme_location' => 'primary',
-                    'container_id' => '',
-                    'menu_class' => 'c-nav-main__list',
-                )
-            );
-        ?>
-    </nav>
-    <button class="c-hamburger  js-show-menu">
-        <span></span>
-    </button>
-</header>
+	<header id="masthead" class="site-header">
+		<div class="site-branding">
+			<?php
+			the_custom_logo();
+			if ( is_front_page() && is_home() ) :
+				?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<?php
+			else :
+				?>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php
+			endif;
+			$wpstart_description = get_bloginfo( 'description', 'display' );
+			if ( $wpstart_description || is_customize_preview() ) :
+				?>
+				<p class="site-description"><?php echo $wpstart_description; /* WPCS: xss ok. */ ?></p>
+			<?php endif; ?>
+		</div><!-- .site-branding -->
 
-<main>
+		<nav id="site-navigation" class="main-navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wpstart' ); ?></button>
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => 'primary-menu',
+			) );
+			?>
+		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
