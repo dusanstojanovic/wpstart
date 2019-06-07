@@ -4,7 +4,7 @@
 html {
     font-size: var(--base-font-size);
     line-height: var(--base-line-height);
-    font-family: var(--font-stack--sans);
+    font-family: var(--font-stack--primary);
     font-weight: normal;
     background: #fff;
     color: var(--c-grey--dark);
@@ -27,7 +27,7 @@ h5,
 h6 {
     position: relative;
     margin: 0 0 0.4em;
-    font-family: var(--font-stack--sans);
+    font-family: var(--font-stack--primary);
     font-weight: normal;
     line-height: normal;
     text-rendering: optimizeLegibility;

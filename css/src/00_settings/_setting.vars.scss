@@ -50,8 +50,8 @@
     /*------------------------------------*\
         #Fonts
     \*------------------------------------*/
-    --font-stack--sans: 'Work Sans', sans-serif;
-    --font-stack--sans-alt: 'Work Sans', sans-serif;
+    --font-stack--primary: 'Metropolis', sans-serif;
+    --font-stack--secondary: 'Metropolis', sans-serif;
     --font-stack--serif: Georgia, 'Times New Roman', Times, serif;
     --font-stack--mono: Monaco, Consolas, 'Lucida Console', monospace;
 
@@ -82,20 +82,26 @@ $breakpoints: (
     #Fonts imports
 ---------------------------------------*/
 @font-face {
-    font-family: 'Work Sans';
-    src: url('fonts/worksans-regular-webfont.woff2') format('woff2');
+    font-family: 'Metropolis';
+    src: url('fonts/metropolis-regular-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Work Sans';
-    src: url('fonts/worksans-semibold-webfont.woff2') format('woff2');
-    font-weight: 600;
+    font-family: 'Metropolis';
+    src: url('fonts/metropolis-regularitalic-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url('fonts/metropolis-bold-webfont.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Work Sans';
-    src: url('fonts/worksans-bold-webfont.woff2') format('woff2');
+    font-family: 'Metropolis';
+    src: url('fonts/metropolis-bolditalic-webfont.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }

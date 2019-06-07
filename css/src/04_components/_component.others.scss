@@ -1,39 +1,6 @@
 /*---------------------------------------
-    smooth scroll
----------------------------------------*/
-.c-scrollcontainer {
-    width: 100%;
-    height: 100vh;
-    overflow: auto;
-}
-.scrollbar-track {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-/*---------------------------------------
     links
 ---------------------------------------*/
-.c-link {
-    &--solo {
-        font-size: 12px;
-        font-weight: bold;
-        text-transform: uppercase;
-        display: inline-block;
-        position: relative;
-        color: var(--c-grey);
-
-        svg {
-            transition: all 0.2s cubic-bezier(0, 0.33, 0.66, 1);
-        }
-
-        &:hover {
-            svg {
-                margin-right: 8px;
-            }
-        }
-    }
-}
 
 /*---------------------------------------
     blank button
@@ -50,7 +17,7 @@
 }
 
 /*---------------------------------------
-
+    Webkit scrollbar
 ---------------------------------------*/
 /* width */
 ::-webkit-scrollbar {
@@ -67,17 +34,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--c-brand);
-}
-/*---------------------------------------
-    viewport
----------------------------------------*/
-.viewport {
-    overflow: hidden;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }

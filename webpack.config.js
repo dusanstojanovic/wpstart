@@ -111,6 +111,11 @@ module.exports = {
             new UglifyJSPlugin({
                 cache: true,
                 parallel: true,
+                uglifyOptions: {
+                    output: {
+                        comments: false,
+                    },
+                },
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],

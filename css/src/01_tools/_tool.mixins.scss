@@ -102,29 +102,27 @@
     }
 }
 
-// Responsive txt
-//  usage: @include resptxt(small_size, small_bp, big_size, big_bp);
-//         @include resptxt(16px, 320px, 84px, 1280px);
-//------------------------------------------------------------
+//  Anything responsive
+//  @include responsive(css_property, small_size, small_breakpoint, big_size, big_breakpoint);
+//  example: @include responsive(margin-top, 16px, 320px, 64px, 1280px);
+//  and in words: let margin top be between 16px at 320px and 64px at 1280px
 @function strip-unit($number) {
     @if type-of($number) == 'number' and not unitless($number) {
         @return $number / ($number * 0 + 1);
     }
     @return $number;
 }
-@mixin resptxt($size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
+@mixin responsive($property: font-size, $size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
     $diff-size: strip-unit($size-big - $size-sm);
     $diff-bp: strip-unit($bp-lg - $bp-sm);
 
-    font-size: calc(
-        #{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp})
-    );
+    #{unquote($property)}: calc(#{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp}));
 
     @media screen and (max-width: $bp-sm) {
-        font-size: $size-sm;
+        #{unquote($property)}: $size-sm;
     }
     @media screen and (min-width: $bp-lg) {
-        font-size: $size-big;
+        #{unquote($property)}: $size-big;
     }
 }
 
