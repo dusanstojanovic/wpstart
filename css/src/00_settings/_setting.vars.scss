@@ -83,25 +83,25 @@ $breakpoints: (
 ---------------------------------------*/
 @font-face {
     font-family: 'Metropolis';
-    src: url('fonts/metropolis-regular-webfont.woff2') format('woff2');
+    src: url('../../fonts/metropolis-regular-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Metropolis';
-    src: url('fonts/metropolis-regularitalic-webfont.woff2') format('woff2');
+    src: url('../../fonts/metropolis-regularitalic-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: 'Metropolis';
-    src: url('fonts/metropolis-bold-webfont.woff2') format('woff2');
+    src: url('../../fonts/metropolis-bold-webfont.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
     font-family: 'Metropolis';
-    src: url('fonts/metropolis-bolditalic-webfont.woff2') format('woff2');
+    src: url('../../fonts/metropolis-bolditalic-webfont.woff2') format('woff2');
     font-weight: 700;
-    font-style: normal;
+    font-style: italic;
 }
