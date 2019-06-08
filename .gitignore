@@ -1,5 +1,5 @@
-/css/build/*
-/js/build/*
+/scss/build/*
+/jsapp/build/*
 
 #compiled source #
 ###################

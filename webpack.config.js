@@ -8,9 +8,9 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-    entry: ['./js/src/app.js', './css/src/screen.scss'],
+    entry: ['./jsapp/src/app.js', './scss/src/screen.scss'],
     output: {
-        filename: './js/build/app.min.js',
+        filename: './jsapp/build/app.min.js',
         path: path.resolve(__dirname),
     },
     // jQuery added
@@ -84,7 +84,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: './css/build/screen.min.css',
+            filename: './scss/build/screen.min.css',
         }),
         new SVGSpritemapPlugin('./img/src-icons/**/*.svg', {
             output: {
