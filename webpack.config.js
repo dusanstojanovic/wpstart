@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -8,9 +9,9 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-    entry: ['./jsapp/src/app.js', './scss/src/screen.scss'],
+    entry: ['./javascript/app.js', './scss/screen.scss'],
     output: {
-        filename: './jsapp/build/app.min.js',
+        filename: './assets/js/app.min.js',
         path: path.resolve(__dirname),
     },
     // jQuery added
@@ -27,7 +28,8 @@ module.exports = {
                     options: {
                         limit: 8192,
                         name: '[name].[ext]',
-                        outputPath: '../../fonts/',
+                        publicPath: '../fonts/',
+                        outputPath: '/assets/fonts/',
                     },
                 },
             },
@@ -37,7 +39,8 @@ module.exports = {
                 options: {
                     limit: 8192,
                     name: '[name].[ext]',
-                    outputPath: '../../img',
+                    publicPath: '../img/',
+                    outputPath: '/assets/img/',
                 },
             },
             {
@@ -78,12 +81,18 @@ module.exports = {
         ],
     },
     plugins: [
+        new CopyPlugin([
+            {
+                from: './images',
+                to: './assets/img',
+            },
+        ]),
         new MiniCssExtractPlugin({
-            filename: './scss/build/screen.min.css',
+            filename: './assets/css/screen.min.css',
         }),
-        new SVGSpritemapPlugin('./img/src-icons/**/*.svg', {
+        new SVGSpritemapPlugin('./icons/**/*.svg', {
             output: {
-                filename: './img/icons.svg',
+                filename: './assets/img/icons.svg',
                 svgo: true,
                 svg4everybody: false,
             },
