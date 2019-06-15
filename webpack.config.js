@@ -23,21 +23,17 @@ module.exports = {
         rules: [
             {
                 test: /\.woff(2)?$/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                        name: '[name].[ext]',
-                        publicPath: '../fonts/',
-                        outputPath: '/assets/fonts/',
-                    },
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '../fonts/',
+                    outputPath: '/assets/fonts/',
                 },
             },
             {
-                test: /\.(png|jpg|svg)$/,
-                loader: 'url-loader',
+                test: /\.(png|jpg|jpeg|gif|svg|webp)$/,
+                loader: 'file-loader',
                 options: {
-                    limit: 8192,
                     name: '[name].[ext]',
                     publicPath: '../img/',
                     outputPath: '/assets/img/',
@@ -46,11 +42,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env'],
                 },
             },
             {
