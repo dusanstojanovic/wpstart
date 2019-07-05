@@ -8,7 +8,7 @@ yarn run watch
 yarn run dist
 ```
 
-There are sketch and iconsproj files in `webicons` folder, use them to generate your app icons. Don't forget to change `browserconfig.xml` and `manifest.json`
+There are sketch and iconsproj files in `favicons` folder, use them to generate your app icons. Don't forget to change `browserconfig.xml` and `manifest.json`
 
 The source files are in `javascript`, `scss`, `images`, `icons`, `fonts` folders
 
