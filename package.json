@@ -21,9 +21,9 @@
         "swup": "^2.0.4"
     },
     "devDependencies": {
-        "@babel/cli": "^7.4.4",
-        "@babel/core": "^7.4.5",
-        "@babel/preset-env": "^7.4.5",
+        "@babel/cli": "^7.5.0",
+        "@babel/core": "^7.5.4",
+        "@babel/preset-env": "^7.5.4",
         "babel-loader": "^8.0.6",
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.2.2",
@@ -33,13 +33,13 @@
         "lost": "^8.3.1",
         "mini-css-extract-plugin": "^0.7.0",
         "node-sass": "^4.12.0",
-        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-loader": "^3.0.0",
-        "postcss-preset-env": "^6.6.0",
+        "postcss-preset-env": "^6.7.0",
         "sass-loader": "^7.1.0",
         "svg-spritemap-webpack-plugin": "^3.3.5",
         "uglifyjs-webpack-plugin": "^2.1.3",
-        "webpack": "^4.35.0",
+        "webpack": "^4.35.3",
         "webpack-build-notifier": "^1.0.3",
         "webpack-cli": "^3.3.5"
     }
