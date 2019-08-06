@@ -7,13 +7,14 @@
     --base-spacing-unit: 20px;
     --base-border-radius: 3px;
     --base-transition-time: 0.075s;
+
     /* buttons and forms vars */
     --form-border-width: 1px;
     --form-padding: 18px;
     --form-sm-divisor: 1.6;
     --form-lg-multiplier: 2.4;
 
-    --btn-border-width: 2px;
+    --btn-border-width: 1px;
     --btn-padding-v: 10px;
     --btn-padding-h: 24px;
     --btn-sm-divisor: 1.6;
@@ -108,12 +109,4 @@ $breakpoints: (
     font-weight: 700;
     font-style: italic;
     font-display: swap;
-}
-
-/*---------------------------------------
-    Test
----------------------------------------*/
-.zzzzz {
-    background-image: url(../images/big.jpg);
-    background-image: url(../images/small.png);
 }
