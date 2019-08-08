@@ -116,7 +116,7 @@ hr {
     overflow: hidden;
     clear: both;
     margin: var(--base-spacing-unit) 0;
-    background: #999;
+    background: var(--c-grey--light);
     height: 1px;
     border: 0;
 }
@@ -179,4 +179,24 @@ mark {
 ::selection {
     background: rgba(#000, 0.99);
     color: #fff;
+}
+
+/*---------------------------------------
+    Webkit scrollbar
+---------------------------------------*/
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--c-brand);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c-brand);
 }

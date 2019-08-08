@@ -11,8 +11,6 @@
     justify-content: center;
 }
 
-
-
 /*------------------------------------*\
     #This or this
 \*------------------------------------*/
@@ -29,8 +27,12 @@
         flex: 1 1 50%;
         align-items: center;
 
-        > :first-child  {margin-top: 0;}
-        > :last-child   {margin-bottom: 0;}
+        > :first-child {
+            margin-top: 0;
+        }
+        > :last-child {
+            margin-bottom: 0;
+        }
     }
     &__or {
         display: flex;
@@ -39,8 +41,6 @@
         justify-content: center;
     }
 }
-
-
 
 /*------------------------------------*\
     #o-subscribe element
@@ -53,8 +53,12 @@
     &__main {
         flex: 10 0 280px;
 
-        > :first-child  {margin-top: 0;}
-        > :last-child   {margin-bottom: 0;}
+        > :first-child {
+            margin-top: 0;
+        }
+        > :last-child {
+            margin-bottom: 0;
+        }
     }
 
     &__sec {
@@ -62,8 +66,6 @@
         text-align: center;
     }
 }
-
-
 
 /*---------------------------------------
     #flag/media objects
@@ -84,12 +86,20 @@
     &__body {
         flex: 1 1 auto;
 
-        > :first-child  {margin-top: 0;}
-        > :last-child   {margin-bottom: 0;}
+        > :first-child {
+            margin-top: 0;
+        }
+        > :last-child {
+            margin-bottom: 0;
+        }
 
         > div {
-            > :first-child  {margin-top: 0;}
-            > :last-child   {margin-bottom: 0;}
+            > :first-child {
+                margin-top: 0;
+            }
+            > :last-child {
+                margin-bottom: 0;
+            }
         }
     }
 

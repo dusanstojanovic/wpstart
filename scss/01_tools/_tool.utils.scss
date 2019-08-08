@@ -10,78 +10,78 @@
         margin-bottom: 0;
     }
 }
-.u-mrg--1\/2 {
-    margin: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-mrg--t\/2 {
-    margin-top: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-mrg--r\/2 {
-    margin-right: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-mrg--b\/2 {
-    margin-bottom: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-mrg--l\/2 {
-    margin-left: calc(var(--base-spacing-unit) / 2) !important;
-}
+// .u-mrg--1\/2 {
+//     margin: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-mrg--t\/2 {
+//     margin-top: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-mrg--r\/2 {
+//     margin-right: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-mrg--b\/2 {
+//     margin-bottom: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-mrg--l\/2 {
+//     margin-left: calc(var(--base-spacing-unit) / 2) !important;
+// }
 
 /* margin increments */
-@for $i from 0 through 4 {
-    .u-mrg--x#{$i} {
-        margin: calc(var(--base-spacing-unit) *#{$i}) !important;
-    }
-    .u-mrg--tx#{$i} {
-        margin-top: calc(var(--base-spacing-unit) *#{$i}) !important;
-    }
-    .u-mrg--bx#{$i} {
-        margin-bottom: calc(var(--base-spacing-unit) *#{$i}) !important;
-    }
-    .u-mrg--lx#{$i} {
-        margin-left: calc(var(--base-spacing-unit) *#{$i}) !important;
-    }
-    .u-mrg--rx#{$i} {
-        margin-right: calc(var(--base-spacing-unit) *#{$i}) !important;
-    }
-}
+// @for $i from 0 through 4 {
+//     .u-mrg--x#{$i} {
+//         margin: calc(var(--base-spacing-unit) *#{$i}) !important;
+//     }
+//     .u-mrg--tx#{$i} {
+//         margin-top: calc(var(--base-spacing-unit) *#{$i}) !important;
+//     }
+//     .u-mrg--bx#{$i} {
+//         margin-bottom: calc(var(--base-spacing-unit) *#{$i}) !important;
+//     }
+//     .u-mrg--lx#{$i} {
+//         margin-left: calc(var(--base-spacing-unit) *#{$i}) !important;
+//     }
+//     .u-mrg--rx#{$i} {
+//         margin-right: calc(var(--base-spacing-unit) *#{$i}) !important;
+//     }
+// }
 
 /*------------------------------------*\
     #Paddings
 \*------------------------------------*/
-.u-pdn--1\/2 {
-    padding: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-pdn--t\/2 {
-    padding-top: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-pdn--r\/2 {
-    padding-right: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-pdn--b\/2 {
-    padding-bottom: calc(var(--base-spacing-unit) / 2) !important;
-}
-.u-pdn--l\/2 {
-    padding-left: calc(var(--base-spacing-unit) / 2) !important;
-}
+// .u-pdn--1\/2 {
+//     padding: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-pdn--t\/2 {
+//     padding-top: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-pdn--r\/2 {
+//     padding-right: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-pdn--b\/2 {
+//     padding-bottom: calc(var(--base-spacing-unit) / 2) !important;
+// }
+// .u-pdn--l\/2 {
+//     padding-left: calc(var(--base-spacing-unit) / 2) !important;
+// }
 
 /* padding increments */
-@for $i from 0 through 4 {
-    .u-pdn--x#{$i} {
-        padding: calc(var(--base-spacing-unit) * #{$i}) !important;
-    }
-    .u-pdn--tx#{$i} {
-        padding-top: calc(var(--base-spacing-unit) * #{$i}) !important;
-    }
-    .u-pdn--bx#{$i} {
-        padding-bottom: calc(var(--base-spacing-unit) * #{$i}) !important;
-    }
-    .u-pdn--lx#{$i} {
-        padding-left: calc(var(--base-spacing-unit) * #{$i}) !important;
-    }
-    .u-pdn--rx#{$i} {
-        padding-right: calc(var(--base-spacing-unit) * #{$i}) !important;
-    }
-}
+// @for $i from 0 through 4 {
+//     .u-pdn--x#{$i} {
+//         padding: calc(var(--base-spacing-unit) * #{$i}) !important;
+//     }
+//     .u-pdn--tx#{$i} {
+//         padding-top: calc(var(--base-spacing-unit) * #{$i}) !important;
+//     }
+//     .u-pdn--bx#{$i} {
+//         padding-bottom: calc(var(--base-spacing-unit) * #{$i}) !important;
+//     }
+//     .u-pdn--lx#{$i} {
+//         padding-left: calc(var(--base-spacing-unit) * #{$i}) !important;
+//     }
+//     .u-pdn--rx#{$i} {
+//         padding-right: calc(var(--base-spacing-unit) * #{$i}) !important;
+//     }
+// }
 
 /*------------------------------------*\
     #Text utilities
@@ -110,10 +110,6 @@
 }
 .u-txt--ita {
     font-style: italic !important;
-}
-/* text line heights */
-.u-txt--lh1 {
-    line-height: 1 !important;
 }
 /* truncate text */
 .u-txt--truncate {
@@ -195,9 +191,6 @@
 .u-txt--sans-alt {
     font-family: var(--font-stack--secondary) !important;
 }
-.u-txt--serif {
-    font-family: var(--font-stack--serif) !important;
-}
 .u-txt--mono {
     font-family: var(--font-stack--mono) !important;
 }
@@ -234,10 +227,6 @@
 }
 .u-disp--n {
     display: none !important;
-}
-
-.u-height--100p {
-    height: 100%;
 }
 
 /*------------------------------------*\

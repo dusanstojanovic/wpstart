@@ -4,13 +4,13 @@
 :root {
     --base-font-size: 16px;
     --base-line-height: 1.5;
-    --base-spacing-unit: 20px;
+    --base-spacing-unit: 24px;
     --base-border-radius: 3px;
     --base-transition-time: 0.075s;
 
     /* buttons and forms vars */
     --form-border-width: 1px;
-    --form-padding: 18px;
+    --form-padding: 10px;
     --form-sm-divisor: 1.6;
     --form-lg-multiplier: 2.4;
 
@@ -23,37 +23,33 @@
     /*---------------------------------------
         Colors
     ---------------------------------------*/
-    --c-brand: #da251d;
+    --c-brand: #ff5944;
     --c-brand-sec: #ff6f61;
     // --c-brand-sec: #ff04a7;
 
     --c-grey--dark: #091e2c;
     --c-grey: #a1aeb7;
-    --c-grey--light: #f5f8fb;
+    --c-grey--light: #eee;
     --c-grey--transparent: rgba(9, 30, 44, 0.08);
 
     /*Usual colors*/
     --c-white: #fff;
     --c-black: #000;
-
     --c-blue: #60829a;
-
     --c-green: #3cbc21;
     --c-red: #f77150;
-
     --c-orange: #ffc303;
     --c-yellow: #ffec04;
 
     /*Link color*/
     --c-link: #60829a;
-    --c-link-hover: #da251d;
+    --c-link-hover: #ff5944;
 
     /*------------------------------------*\
         #Fonts
     \*------------------------------------*/
     --font-stack--primary: 'Metropolis', sans-serif;
     --font-stack--secondary: 'Metropolis', sans-serif;
-    --font-stack--serif: Georgia, 'Times New Roman', Times, serif;
     --font-stack--mono: Monaco, Consolas, 'Lucida Console', monospace;
 
     /*------------------------------------*\

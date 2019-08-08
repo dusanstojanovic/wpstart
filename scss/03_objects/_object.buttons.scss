@@ -2,17 +2,17 @@
     #Buttons
 \*------------------------------------*/
 .o-btn {
-    appearance: none;
-    -webkit-appearance: none;
     display: inline-block;
-    padding: 18px;
-    border: var(--btn-border-width) solid var(--c-brand);
-    background: var(--c-brand);
-    font-size: 13px;
-    color: var(--c-grey--dark);
-    text-transform: uppercase;
+    appearance: none;
     line-height: normal;
     cursor: pointer;
+
+    padding: var(--btn-padding-v) var(--btn-padding-h);
+    border: var(--btn-border-width) solid var(--c-brand);
+    border-radius: var(--base-border-radius);
+    background: var(--c-brand);
+    font-size: var(--base-font-size);
+    color: var(--c-grey--dark);
 
     &:active {
         position: relative;
@@ -21,10 +21,18 @@
     &:focus {
         outline: none;
     }
+
     /* block button */
     &--block {
         display: block;
         text-align: center;
         width: 100%;
+    }
+
+    /* blank btn */
+    &--blank {
+        padding: 0;
+        background: transparent none;
+        border: 0;
     }
 }

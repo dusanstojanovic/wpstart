@@ -1,18 +1,6 @@
 //  Breakpoints Mixin
 //  usage: @include bp(bp320)  {...}
 //  ------------------------------------------------------------
-
-/*---------------------------------------
-    Breakpoints
----------------------------------------*/
-// $breakpoints: (
-//     "bp320" : 320px,
-//     "bp480" : 480px,
-//     "bp768" : 768px,
-//     "bp1024": 1024px,
-//     "bp1280": 1280px,
-// );
-
 @mixin bp($breakpoint) {
     $value: map-get($breakpoints, $breakpoint); //  see _settings.vars.scss
     @if $value != null {
@@ -25,21 +13,37 @@
     }
 }
 
+//  Anything responsive
+//  @include responsive(css_property, small_size, small_breakpoint, big_size, big_breakpoint);
+//  example: @include responsive(margin-top, 16px, 320px, 64px, 1280px);
+//  and in words: let margin top be between 16px at 320px and 64px at 1280px
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+@mixin responsive($property: font-size, $size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
+    $diff-size: strip-unit($size-big - $size-sm);
+    $diff-bp: strip-unit($bp-lg - $bp-sm);
+
+    #{unquote($property)}: calc(#{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp}));
+
+    @media screen and (max-width: $bp-sm) {
+        #{unquote($property)}: $size-sm;
+    }
+    @media screen and (min-width: $bp-lg) {
+        #{unquote($property)}: $size-big;
+    }
+}
+
 //  Line-On-Sides Headers
 //  http://css-tricks.com/line-on-sides-headers/
 //  <h1 class="sidelines"><span class="sidelines__text">Heading</span></h1>
 //  usage: @include sidelines(center, 1000px, 1px, #333, 20px, ".sidelines__text", '/path/to/ornament.png');
 //         @include sidelines(orientation, width, height, bgcolor, margin, innertext, '/path/to/ornament.png');
 //  ------------------------------------------------------------
-@mixin sidelines(
-    $orientation: center,
-    $width: 1600px,
-    $height: 1px,
-    $bgcolor: $c--grey-dark,
-    $margin: 1.25rem,
-    $innertext: '.sidelines__text',
-    $bgimg: ''
-) {
+@mixin sidelines($orientation: center, $width: 1600px, $height: 1px, $bgcolor: $c--grey-dark, $margin: 1.25rem, $innertext: '.sidelines__text', $bgimg: '') {
     overflow: hidden;
     line-height: normal;
     #{unquote($innertext)} {
@@ -99,30 +103,6 @@
                 display: none;
             }
         }
-    }
-}
-
-//  Anything responsive
-//  @include responsive(css_property, small_size, small_breakpoint, big_size, big_breakpoint);
-//  example: @include responsive(margin-top, 16px, 320px, 64px, 1280px);
-//  and in words: let margin top be between 16px at 320px and 64px at 1280px
-@function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
-    }
-    @return $number;
-}
-@mixin responsive($property: font-size, $size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
-    $diff-size: strip-unit($size-big - $size-sm);
-    $diff-bp: strip-unit($bp-lg - $bp-sm);
-
-    #{unquote($property)}: calc(#{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp}));
-
-    @media screen and (max-width: $bp-sm) {
-        #{unquote($property)}: $size-sm;
-    }
-    @media screen and (min-width: $bp-lg) {
-        #{unquote($property)}: $size-big;
     }
 }
 
