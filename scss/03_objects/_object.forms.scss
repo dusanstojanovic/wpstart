@@ -116,5 +116,6 @@
     autofill
 ---------------------------------------*/
 input:-webkit-autofill {
+    box-shadow: inset 0 0 0px 9999px rgb(217, 105, 16);
     -webkit-box-shadow: inset 0 0 0px 9999px rgb(217, 105, 16);
 }
