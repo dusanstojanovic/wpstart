@@ -1,5 +1,8 @@
 <?php
 
+wp_enqueue_style('wptest-style', get_template_directory_uri() . '/assets/css/screen.min.css');
+wp_enqueue_script('wptest-js', get_template_directory_uri() . '/assets/js/app.min.js', array('jquery'), '', true);
+
 /*---------------------------------------
     Remove unwanted WP stuff from <head>
 ---------------------------------------*/
