@@ -1,2 +1,1 @@
-const $ = require('jquery');
-const jQueryBridget = require('jquery-bridget');
+// const $ = require('jquery');
