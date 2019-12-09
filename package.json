@@ -8,7 +8,8 @@
     "scripts": {
         "build": "webpack --mode development",
         "dist": "webpack --mode production",
-        "watch": "webpack --watch --mode development"
+        "watch": "webpack --watch --mode development",
+        "format:php": "prettier --config=prettier.config.js --write --parser=php"
     },
     "dependencies": {
         "@swup/body-class-plugin": "^1.0.1",
@@ -24,6 +25,7 @@
         "@babel/cli": "^7.7.5",
         "@babel/core": "^7.7.5",
         "@babel/preset-env": "^7.7.6",
+        "@prettier/plugin-php": "^0.11.2",
         "babel-loader": "^8.0.6",
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.2.2",
