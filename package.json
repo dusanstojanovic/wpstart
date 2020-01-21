@@ -11,26 +11,26 @@
         "watch": "webpack --watch --mode development"
     },
     "dependencies": {
-        "@swup/body-class-plugin": "^1.0.1",
+        "@swup/body-class-plugin": "^1.0.2",
         "@swup/debug-plugin": "^1.0.3",
         "@swup/head-plugin": "^1.0.2",
         "@swup/js-plugin": "^1.0.4",
         "@swup/preload-plugin": "^1.0.3",
         "@swup/scroll-plugin": "^1.0.6",
-        "gsap": "^3.0.5",
-        "swup": "^2.0.8"
+        "gsap": "^3.2.2",
+        "swup": "^2.0.9"
     },
     "devDependencies": {
-        "@babel/cli": "^7.8.3",
-        "@babel/core": "^7.8.3",
-        "@babel/preset-env": "^7.8.3",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.6",
+        "@babel/preset-env": "^7.8.6",
         "babel-loader": "^8.0.6",
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.2.2",
         "copy-webpack-plugin": "^5.1.1",
         "css-loader": "^3.4.2",
         "eslint": "^6.8.0",
-        "file-loader": "^5.0.2",
+        "file-loader": "^5.1.0",
         "lost": "^8.3.1",
         "mini-css-extract-plugin": "^0.9.0",
         "node-sass": "^4.13.1",
@@ -38,13 +38,13 @@
         "postcss-loader": "^3.0.0",
         "postcss-preset-env": "^6.7.0",
         "sass-loader": "^8.0.2",
-        "svg-spritemap-webpack-plugin": "^3.5.3",
-        "swiper": "^5.3.0",
-        "terser-webpack-plugin": "^2.3.2",
-        "webpack": "^4.41.5",
+        "svg-spritemap-webpack-plugin": "^3.5.4",
+        "swiper": "^5.3.6",
+        "terser-webpack-plugin": "^2.3.5",
+        "webpack": "^4.41.6",
         "webpack-build-notifier": "^2.0.0",
         "webpack-bundle-analyzer": "^3.6.0",
-        "webpack-cli": "^3.3.10"
+        "webpack-cli": "^3.3.11"
     },
     "optionalDependencies": {
         "fsevents": "^2.1.2"
