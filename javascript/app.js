@@ -1,10 +1,11 @@
 //  testing eslint
 
-const body = document.body;
+// const body = document.body;
+const {body} = document;
 
 module.exports = function() {
-    var hello = 'Hello, world';
-    let goodBye = 'Goodbye, pal';
+    const hello = 'Hello, world';
+    const goodBye = 'Goodbye, pal';
 
     return hello;
 };
@@ -15,4 +16,8 @@ module.exports = function() {
 function toggleMenu() {
     const toggleMenu = document.querySelectorAll('.js-show-menu');
     console.log('aaa');
+    const foo = {
+        bar: 'baz',
+        qux: 'quux',
+    };
 }
