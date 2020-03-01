@@ -4,51 +4,53 @@ module.exports = {
         es6: true,
         node: true,
         jquery: true,
-        jest: true
+        jest: true,
     },
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
     },
     parserOptions: {
-        "ecmaVersion": 2020,
+        ecmaVersion: 2020,
+        sourceType: 'module',
     },
     rules: {
-        "no-unused-vars": 1,
-        "comma-dangle": 0,
-        "quotes": [
-            "error",
-            "single",
+        'no-unused-vars': 1,
+        'comma-dangle': 0,
+        quotes: [
+            'error',
+            'single',
             {
-                "allowTemplateLiterals": true
-            }
+                allowTemplateLiterals: true,
+            },
         ],
-        "no-shadow": [
-            "error",
+        'no-shadow': [
+            'error',
             {
-                "builtinGlobals": false,
-                "hoist": "functions",
-                "allow": [],
-            }
+                builtinGlobals: false,
+                hoist: 'functions',
+                allow: [],
+            },
         ],
-        "no-console": 1,
-        "prefer-const": [
-            "error",
+        'no-console': 1,
+        'prefer-const': [
+            'error',
             {
-              "destructuring": "all",
-            }
+                destructuring: 'all',
+            },
         ],
-        "semi": 2,
-        "no-var": 2,
-        "indent": 2,
-        "prefer-destructuring": [
-            "error",
+        semi: 2,
+        'no-var': 2,
+        indent: 2,
+        'prefer-destructuring': [
+            'error',
             {
-                "array": true,
-                "object": true,
-            }, {
-                "enforceForRenamedProperties": false,
-            }
+                array: true,
+                object: true,
+            },
+            {
+                enforceForRenamedProperties: false,
+            },
         ],
     },
 };
