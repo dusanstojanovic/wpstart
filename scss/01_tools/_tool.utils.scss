@@ -185,22 +185,14 @@
     font-weight: 800 !important;
 }
 /* text fonts */
-.u-txt--sans {
+.u-txt--mainfont {
     font-family: var(--font-stack--primary) !important;
 }
-.u-txt--sans-alt {
+.u-txt--altfont {
     font-family: var(--font-stack--secondary) !important;
 }
-.u-txt--mono {
+.u-txt--monofont {
     font-family: var(--font-stack--mono) !important;
-}
-
-/* text colors */
-.u-txt--black {
-    color: #000 !important;
-}
-.u-txt--white {
-    color: #fff !important;
 }
 
 /*------------------------------------*\
@@ -215,15 +207,6 @@
 .u-disp--ib {
     display: inline-block !important;
     max-width: 100% !important;
-}
-.u-disp--t {
-    display: table !important;
-}
-.u-disp--tc {
-    display: table-cell !important;
-}
-.u-disp--tr {
-    display: table-row !important;
 }
 .u-disp--n {
     display: none !important;
@@ -240,50 +223,6 @@
     padding: 0 !important;
     border: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
-}
-
-/*------------------------------------*\
-    #Contain floats (clearfix)
-\*------------------------------------*/
-.u-cf:before,
-.u-cf:after {
-    content: ' ';
-    display: table;
-}
-.u-cf:after {
-    clear: both;
-}
-/* with no overflow clipping*/
-.u-cf--ov {
-    display: table-cell !important;
-    width: 10000px !important;
-}
-/* clear elements */
-.u-clear {
-    clear: both !important;
-}
-
-/*------------------------------------*\
-    #Float utilities
-\*------------------------------------*/
-.u-fl--left {
-    float: left !important;
-}
-.u-fl--right {
-    float: right !important;
-}
-.u-fl--none {
-    float: none !important;
-}
-
-/*------------------------------------*\
-    #Overflow utilities
-\*------------------------------------*/
-.u-ovf--h {
-    overflow: hidden !important;
-}
-.u-ovf--v {
-    overflow: visible !important;
 }
 
 /*------------------------------------*\

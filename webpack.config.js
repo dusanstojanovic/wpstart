@@ -1,12 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const terser = require('terser');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const WebpackConcatPlugin = require('webpack-concat-files-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -36,8 +38,8 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    publicPath: '../img/',
-                    outputPath: '/assets/img/',
+                    publicPath: '../images/',
+                    outputPath: './assets/images/',
                 },
             },
             {
@@ -79,7 +81,11 @@ module.exports = {
         new CopyPlugin([
             {
                 from: './images',
-                to: './assets/img',
+                to: './assets/images',
+            },
+            {
+                from: './javascript/modernizr-custom.js',
+                to: './assets/js',
             },
         ]),
         new MiniCssExtractPlugin({
@@ -87,7 +93,7 @@ module.exports = {
         }),
         new SVGSpritemapPlugin('./icons/**/*.svg', {
             output: {
-                filename: './assets/img/icons.svg',
+                filename: './assets/images/icons.svg',
                 svgo: true,
                 svg4everybody: false,
             },
@@ -102,6 +108,19 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
+        }),
+        new WebpackConcatPlugin({
+            bundles: [
+                {
+                    destination: './assets/js/plugins.js',
+                    source: './javascript/plugins/**/*.js',
+                    transforms: {
+                        after: code => {
+                            return terser.minify(code).code;
+                        },
+                    },
+                },
+            ],
         }),
         new BrowserSyncPlugin({
             // prettier-ignore
