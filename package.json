@@ -6,7 +6,7 @@
     "license": "ISC",
     "author": "",
     "scripts": {
-        "see": "browser-sync start --server --files \"*.html\"",
+        "html": "browser-sync start --server --files \"*.html\"",
         "build": "webpack --mode development",
         "dist": "webpack --mode production",
         "watch": "webpack --watch --mode development"
@@ -45,7 +45,7 @@
         "terser-webpack-plugin": "^2.3.5",
         "webpack": "^4.42.0",
         "webpack-build-notifier": "^2.0.0",
-        "webpack-bundle-analyzer": "^3.6.0",
+        "webpack-bundle-analyzer": "^3.6.1",
         "webpack-cli": "^3.3.11",
         "webpack-concat-files-plugin": "^0.3.1"
     },

@@ -87,6 +87,10 @@ module.exports = {
                 from: './javascript/modernizr-custom.js',
                 to: './assets/js',
             },
+            {
+                from: './favicons',
+                to: './assets/favicons',
+            },
         ]),
         new MiniCssExtractPlugin({
             filename: './assets/css/screen.min.css',
