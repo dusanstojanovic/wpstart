@@ -19,14 +19,14 @@
 ---------------------------------------*/
 .o-card {
     /* vars */
-    --o-card-gap: 20px;
+    --o-card--gap: 20px;
 
     display: grid;
-    gap: var(--o-card-gap);
+    grid-gap: var(--o-card--gap);
     grid-template-columns: auto 1fr;
     align-items: center;
 
-    div {
+    & > div {
         > :first-child {
             margin-top: 0;
         }
