@@ -108,6 +108,7 @@ module.exports = {
         new WebpackBuildNotifierPlugin({
             title: 'Webpack Build',
             suppressSuccess: false,
+            failureSound: 'Basso',
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',

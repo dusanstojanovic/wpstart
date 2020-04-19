@@ -29,6 +29,14 @@ remove_action( 'wp_head', array( $wpstart, 'meta_generator_tag' ) );
 add_filter('jpeg_quality', function($arg){return 100;});
 
 /*---------------------------------------
+    Remove ID from menu
+---------------------------------------*/
+function wp_nav_menu_remove_attributes( $menu ){
+    return $menu = preg_replace('/ id=\"(.*)\"/iU', '', $menu );
+}
+add_filter( 'wp_nav_menu', 'wp_nav_menu_remove_attributes' );
+
+/*---------------------------------------
     Remove JQuery migrate
 ---------------------------------------*/
 function wpstart_remove_jquery_migrate($scripts) {
