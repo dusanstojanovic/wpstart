@@ -24,32 +24,32 @@
     "devDependencies": {
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.9.0",
-        "@babel/preset-env": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
         "babel-loader": "^8.1.0",
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.2.2",
         "copy-webpack-plugin": "^5.1.1",
-        "css-loader": "^3.4.2",
+        "css-loader": "^3.5.3",
         "eslint": "^6.8.0",
         "file-loader": "^6.0.0",
         "lost": "^8.3.1",
         "mini-css-extract-plugin": "^0.9.0",
-        "node-sass": "^4.13.1",
+        "node-sass": "^4.14.0",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-loader": "^3.0.0",
         "postcss-preset-env": "^6.7.0",
         "sass-loader": "^8.0.2",
         "svg-spritemap-webpack-plugin": "^3.5.5",
-        "swiper": "^5.3.6",
-        "terser": "^4.6.10",
+        "swiper": "^5.3.8",
+        "terser": "^4.6.12",
         "terser-webpack-plugin": "^2.3.5",
-        "webpack": "^4.42.1",
+        "webpack": "^4.43.0",
         "webpack-build-notifier": "^2.0.0",
-        "webpack-bundle-analyzer": "^3.6.1",
+        "webpack-bundle-analyzer": "^3.7.0",
         "webpack-cli": "^3.3.11",
         "webpack-concat-files-plugin": "^0.3.1"
     },
     "optionalDependencies": {
-        "fsevents": "^2.1.2"
+        "fsevents": "^2.1.3"
     }
 }
