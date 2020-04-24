@@ -41,7 +41,8 @@ module.exports = {
         ],
         semi: 2,
         'no-var': 2,
-        indent: 2,
+        // indent: 2,
+        indent: ['error', 4, { SwitchCase: 1 }],
         'prefer-destructuring': [
             'error',
             {

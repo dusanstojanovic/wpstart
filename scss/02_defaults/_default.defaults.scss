@@ -19,6 +19,13 @@ body {
     text-align: center;
     height: 100%;
 }
+
+// body {
+//     min-height: 100vh;
+//     /* mobile viewport bug fix */
+//     min-height: -webkit-fill-available;
+// }
+
 h1,
 h2,
 h3,
