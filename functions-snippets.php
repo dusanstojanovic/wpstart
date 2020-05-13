@@ -96,6 +96,13 @@ function auto_redirect_after_logout() {
 }
 
 /*---------------------------------------
+    Remove Contact form 7 css/js/paragraphs0
+---------------------------------------*/
+// add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
+add_filter('wpcf7_autop_or_not', '__return_false');
+
+/*---------------------------------------
     Unregister default widgets
 ---------------------------------------*/
 function wpstart_unregister_widgets() {
