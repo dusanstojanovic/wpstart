@@ -22,6 +22,7 @@ module.exports = {
         jquery: 'jQuery',
     },
     devtool: 'source-map',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -78,20 +79,22 @@ module.exports = {
         ],
     },
     plugins: [
-        new CopyPlugin([
-            {
-                from: './images',
-                to: './assets/images',
-            },
-            {
-                from: './javascript/modernizr-custom.js',
-                to: './assets/js',
-            },
-            {
-                from: './favicons',
-                to: './assets/favicons',
-            },
-        ]),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: './images',
+                    to: './assets/images',
+                },
+                {
+                    from: './javascript/modernizr-custom.js',
+                    to: './assets/js',
+                },
+                {
+                    from: './favicons',
+                    to: './assets/favicons',
+                },
+            ],
+        }),
         new MiniCssExtractPlugin({
             filename: './assets/css/screen.min.css',
         }),
@@ -135,7 +138,11 @@ module.exports = {
                 '!./node_modules',
                 '!./package.json',
             ],
-            reloadDelay: 0,
+            reloadDelay: 1,
+            // https: {
+            //     key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.key',
+            //     cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.crt',
+            // },
         }),
         // new BundleAnalyzerPlugin(),
     ],
@@ -152,7 +159,18 @@ module.exports = {
                     warnings: false,
                 },
             }),
-            new OptimizeCSSAssetsPlugin({}),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorPluginOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: {
+                                removeAll: true,
+                            },
+                        },
+                    ],
+                },
+            }),
         ],
     },
 };
