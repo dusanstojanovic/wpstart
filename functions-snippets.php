@@ -1,7 +1,7 @@
 <?php
 
-wp_enqueue_style('wpstart-style', get_template_directory_uri() . '/assets/css/screen.min.css');
-wp_enqueue_script('wpstart-js', get_template_directory_uri() . '/assets/js/app.min.js', array('jquery'), '', true);
+wp_enqueue_style('wpstart-style', get_template_directory_uri() . '/dist/css/screen.min.css');
+wp_enqueue_script('wpstart-js', get_template_directory_uri() . '/dist/js/app.min.js', array('jquery'), '', true);
 
 /*---------------------------------------
     Remove unwanted WP stuff from <head>
