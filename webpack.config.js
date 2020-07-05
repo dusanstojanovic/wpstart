@@ -12,10 +12,10 @@ const WebpackConcatPlugin = require('webpack-concat-files-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-    entry: ['./javascript/app.js', './scss/screen.scss'],
+    entry: ['./assets/js/app.js', './assets/scss/screen.scss'],
     output: {
-        filename: './assets/js/app.min.js',
         path: path.resolve(__dirname),
+        filename: './dist/js/app.min.js',
     },
     // jQuery added
     externals: {
@@ -31,7 +31,7 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     publicPath: '../fonts/',
-                    outputPath: '/assets/fonts/',
+                    outputPath: './dist/fonts/',
                 },
             },
             {
@@ -39,8 +39,8 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    publicPath: '../images/',
-                    outputPath: './assets/images/',
+                    publicPath: '../img/',
+                    outputPath: './dist/img/',
                 },
             },
             {
@@ -82,25 +82,29 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: './images',
-                    to: './assets/images',
+                    from: './assets/img',
+                    to: './dist/img',
                 },
                 {
-                    from: './javascript/modernizr-custom.js',
-                    to: './assets/js',
+                    from: './assets/js/modernizr-custom.js',
+                    to: './dist/js',
                 },
                 {
-                    from: './favicons',
-                    to: './assets/favicons',
+                    from: './assets/favicons',
+                    to: './dist/favicons',
+                },
+                {
+                    from: './assets/fonts',
+                    to: './dist/fonts',
                 },
             ],
         }),
         new MiniCssExtractPlugin({
-            filename: './assets/css/screen.min.css',
+            filename: './dist/css/screen.min.css',
         }),
-        new SVGSpritemapPlugin('./icons/**/*.svg', {
+        new SVGSpritemapPlugin('./assets/icons/**/*.svg', {
             output: {
-                filename: './assets/images/icons.svg',
+                filename: './dist/img/icons.svg',
                 svgo: true,
                 svg4everybody: false,
             },
@@ -120,8 +124,8 @@ module.exports = {
         new WebpackConcatPlugin({
             bundles: [
                 {
-                    destination: './assets/js/plugins.js',
-                    source: './javascript/plugins/**/*.js',
+                    destination: './dist/js/vendor.min.js',
+                    source: './assets/js/vendor/**/*.js',
                     transforms: {
                         after: code => {
                             return terser.minify(code).code;
@@ -138,7 +142,7 @@ module.exports = {
                 '!./node_modules',
                 '!./package.json',
             ],
-            reloadDelay: 1,
+            reloadDelay: 2,
             // https: {
             //     key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.key',
             //     cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.crt',
@@ -161,14 +165,7 @@ module.exports = {
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorPluginOptions: {
-                    preset: [
-                        'default',
-                        {
-                            discardComments: {
-                                removeAll: true,
-                            },
-                        },
-                    ],
+                    preset: ['default', { discardComments: { removeAll: true } }],
                 },
             }),
         ],

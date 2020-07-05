@@ -1,6 +1,14 @@
 //  Breakpoints Mixin
 //  usage: @include bp(bp320)  {...}
 //  ------------------------------------------------------------
+$breakpoints: (
+    'bp320': 320px,
+    'bp480': 480px,
+    'bp768': 768px,
+    'bp1024': 1024px,
+    'bp1280': 1280px,
+    'bp1920': 1920px,
+);
 @mixin bp($breakpoint) {
     $value: map-get($breakpoints, $breakpoint); //  see _settings.vars.scss
     @if $value != null {
@@ -108,7 +116,6 @@
 
 //  Squircle mixin
 //  usage: .class { @include squircle(250px, #12A266); }
-//         @include sidelines(orientation, width, height, bgcolor, margin, innertext, '/path/to/ornament.png');
 //  ------------------------------------------------------------
 @mixin squircle($s: 100, $c: $main) {
     $s: $s + 0px;

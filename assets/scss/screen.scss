@@ -33,3 +33,17 @@
 // @import '10_misc/_shame.css';
 // @import '02_defaults/_default.print.css';
 // @import '01_tools/_tools.debugcss.css';
+
+.zzzzz {
+    @at-root .selector#{&} {
+        display: none;
+        display: block;
+    }
+}
+
+.clamp {
+    color: red;
+    font-size: clamp(32px, calc(1rem + 5vw), 100px);
+    border: 1px solid #000;
+    padding: clamp(32px, 8vw, 100px) 0;
+}
