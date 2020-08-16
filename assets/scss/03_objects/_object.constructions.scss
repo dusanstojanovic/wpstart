@@ -4,8 +4,8 @@
 \*------------------------------------*/
 .o-centervh {
     display: grid;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
+
     > :first-child {
         margin-top: 0;
     }

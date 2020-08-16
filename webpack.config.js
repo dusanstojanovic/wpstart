@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const terser = require('terser');
+// const terser = require('terser');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -126,11 +126,6 @@ module.exports = {
                 {
                     destination: './dist/js/vendor.min.js',
                     source: './assets/js/vendor/**/*.js',
-                    transforms: {
-                        after: code => {
-                            return terser.minify(code).code;
-                        },
-                    },
                 },
             ],
         }),
@@ -144,8 +139,8 @@ module.exports = {
             ],
             reloadDelay: 2,
             // https: {
-            //     key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.key',
-            //     cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/ednew.local.crt',
+            //     key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/dtsquared.local.key',
+            //     cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/dtsquared.local.crt',
             // },
         }),
         // new BundleAnalyzerPlugin(),
