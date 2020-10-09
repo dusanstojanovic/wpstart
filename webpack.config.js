@@ -63,9 +63,14 @@ module.exports = {
                     },
                     {
                         loader: 'postcss-loader',
+                        // options: {
+                        //     sourceMap: true,
+                        //     plugins: [require('lost'), require('autoprefixer')],
+                        // },
                         options: {
-                            sourceMap: true,
-                            plugins: [require('lost'), require('autoprefixer')],
+                            postcssOptions: {
+                                plugins: [require.resolve('lost'), require.resolve('autoprefixer')],
+                            },
                         },
                     },
                     {

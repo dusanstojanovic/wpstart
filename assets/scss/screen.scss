@@ -46,4 +46,26 @@
     font-size: clamp(32px, calc(1rem + 5vw), 100px);
     border: 1px solid #000;
     padding: clamp(32px, 8vw, 100px) 0;
+    @include bp(bp1024) {
+        display: block;
+        lost-center: 100% flex;
+    }
+}
+
+.container {
+    min-height: 100vh;
+    max-width: 2560px;
+    display: grid;
+    grid-template-columns: 1fr minmax(100%, 560px);
+}
+.img,
+.txt {
+    padding: 50px;
+}
+.img {
+    display: none;
+}
+.txt {
+    background: red;
+    width: 100%;
 }
