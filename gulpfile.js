@@ -27,7 +27,7 @@ const onError = function (err) {
 
 /* css */
 function css() {
-    return src('./scss/*.scss')
+    return src('./assets/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(plumber({ errorHandler: onError }))
         .pipe(sass())
@@ -36,13 +36,13 @@ function css() {
         .pipe(size())
         .pipe(size({ gzip: true }))
         .pipe(sourcemaps.write('./'))
-        .pipe(dest('./assets/css'))
+        .pipe(dest('./dist/css'))
         .pipe(notify({ message: 'CSS task complete', onLast: true }));
 }
 
 /* main js */
 function js() {
-    return src('./javascript/app.js')
+    return src('./assets/js/app.js')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(
             babel({
@@ -53,25 +53,36 @@ function js() {
         .pipe(concat('app.min.js'))
         .pipe(size())
         .pipe(size({ gzip: true }))
-        .pipe(dest('./assets/js'))
+        .pipe(dest('./dist/js'))
         .pipe(notify({ message: 'JS task complete', onLast: true }));
 }
 
 /* plugins js */
-// prettier-ignore
 function jsplugins() {
-    return src('./javascript/plugins/*.js')
+    return src('./assets/js/vendor/*.js')
         .pipe(uglify())
         .pipe(concat('plugins.min.js'))
         .pipe(size())
         .pipe(size({ gzip: true }))
-        .pipe(dest('./assets/js'))
+        .pipe(dest('./dist/js'))
         .pipe(notify({ message: 'JSPLUGINS task complete', onLast: true }));
+}
+
+/* copy stuff */
+function fonts() {
+    return src('./assets/fonts/**/*')
+        .pipe(dest('./dist/fonts'))
+        .pipe(notify({ message: 'FONTS task complete', onLast: true }));
+}
+function favicons() {
+    return src('./assets/favicons/**/*')
+        .pipe(dest('./dist/favicons'))
+        .pipe(notify({ message: 'FAVICONS task complete', onLast: true }));
 }
 
 /* imagemin */
 function img() {
-    return src('./images/*')
+    return src('./assets/img/**/*')
         .pipe(
             imagemin([
                 imagemin.gifsicle({ interlaced: true }),
@@ -82,13 +93,13 @@ function img() {
                 }),
             ]),
         )
-        .pipe(dest('./assets/images'))
+        .pipe(dest('./dist/img'))
         .pipe(notify({ message: 'IMG task complete', onLast: true }));
 }
 
 /* make SVG sprites */
 function icons() {
-    return src('./icons/**/*.svg')
+    return src('./assets/icons/**/*.svg')
         .pipe(
             svgSprite({
                 mode: {
@@ -99,17 +110,19 @@ function icons() {
                 },
             }),
         )
-        .pipe(dest('./assets/img'))
+        .pipe(dest('./dist/img'))
         .pipe(notify({ message: 'ICONS task complete', onLast: true }));
 }
 
 /* watch */
 function watchit() {
-    watch('./sass/**/*.scss', css);
-    watch('./img/*', img);
-    watch('./icons/**/*.svg', icons);
-    watch('./js/*.js', js);
-    watch('./js/plugins/*.js', jsplugins);
+    watch('./assets/scss/**/*.scss', css);
+    watch('./assets/img/**/*', img);
+    watch('./assets/icons/**/*.svg', icons);
+    watch('./assets/js/*.js', js);
+    watch('./assets/js/vendor/*.js', jsplugins);
+    watch('./assets/fonts/**/*', fonts);
+    watch('./assets/favicons/**/*', favicons);
 }
 
 exports.css = css;
@@ -117,5 +130,7 @@ exports.img = img;
 exports.icons = icons;
 exports.js = js;
 exports.jsplugins = jsplugins;
+exports.fonts = fonts;
+exports.favicons = favicons;
 
-exports.default = series(parallel(css, js, jsplugins, img, icons), watchit);
+exports.default = series(parallel(css, js, jsplugins, img, icons, fonts, favicons), watchit);
