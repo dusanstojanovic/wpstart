@@ -1,9 +1,9 @@
 //  testing eslint
 
 // const body = document.body;
-const {body} = document;
+const { body } = document;
 
-module.exports = function() {
+module.exports = function () {
     const hello = 'Hello, world';
     const goodBye = 'Goodbye, pal';
 

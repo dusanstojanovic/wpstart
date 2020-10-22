@@ -13,6 +13,7 @@ const plumber = require('gulp-plumber');
 const svgSprite = require('gulp-svg-sprite');
 const sourcemaps = require('gulp-sourcemaps');
 const size = require('gulp-size');
+const rename = require('gulp-rename');
 
 /* Error notification */
 const onError = function (err) {
@@ -20,7 +21,7 @@ const onError = function (err) {
         title: 'ERROR!!!!!!',
         subtitle: 'Failure!',
         message: 'Error: <%= error.message %>',
-        sound: 'Basso',
+        sound: 'basso',
     })(err);
     this.emit('end');
 };
@@ -32,12 +33,14 @@ function css() {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(sass())
         .pipe(postcss([lost(), autoprefixer()]))
+        .pipe(dest('./dist/css'))
         .pipe(minifyCSS())
         .pipe(size())
         .pipe(size({ gzip: true }))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('./'))
         .pipe(dest('./dist/css'))
-        .pipe(notify({ message: 'CSS task complete', onLast: true }));
+        .pipe(notify({ message: 'CSS task complete', sound: 'tink', onLast: true }));
 }
 
 /* main js */
@@ -54,7 +57,7 @@ function js() {
         .pipe(size())
         .pipe(size({ gzip: true }))
         .pipe(dest('./dist/js'))
-        .pipe(notify({ message: 'JS task complete', onLast: true }));
+        .pipe(notify({ message: 'JS task complete', sound: 'tink', onLast: true }));
 }
 
 /* plugins js */
@@ -65,19 +68,24 @@ function jsplugins() {
         .pipe(size())
         .pipe(size({ gzip: true }))
         .pipe(dest('./dist/js'))
-        .pipe(notify({ message: 'JSPLUGINS task complete', onLast: true }));
+        .pipe(notify({ message: 'JSPLUGINS task complete', sound: 'tink', onLast: true }));
 }
 
 /* copy stuff */
 function fonts() {
     return src('./assets/fonts/**/*')
         .pipe(dest('./dist/fonts'))
-        .pipe(notify({ message: 'FONTS task complete', onLast: true }));
+        .pipe(notify({ message: 'FONTS task complete', sound: 'tink', onLast: true }));
 }
 function favicons() {
     return src('./assets/favicons/**/*')
         .pipe(dest('./dist/favicons'))
-        .pipe(notify({ message: 'FAVICONS task complete', onLast: true }));
+        .pipe(notify({ message: 'FAVICONS task complete', sound: 'tink', onLast: true }));
+}
+function modernizr() {
+    return src('./assets/js/modernizr-custom.js')
+        .pipe(dest('./dist/js'))
+        .pipe(notify({ message: 'MODERNIZR task complete', sound: 'tink', onLast: true }));
 }
 
 /* imagemin */
@@ -94,7 +102,7 @@ function img() {
             ]),
         )
         .pipe(dest('./dist/img'))
-        .pipe(notify({ message: 'IMG task complete', onLast: true }));
+        .pipe(notify({ message: 'IMG task complete', sound: 'tink', onLast: true }));
 }
 
 /* make SVG sprites */
@@ -111,7 +119,7 @@ function icons() {
             }),
         )
         .pipe(dest('./dist/img'))
-        .pipe(notify({ message: 'ICONS task complete', onLast: true }));
+        .pipe(notify({ message: 'ICONS task complete', sound: 'tink', onLast: true }));
 }
 
 /* watch */
@@ -132,5 +140,6 @@ exports.js = js;
 exports.jsplugins = jsplugins;
 exports.fonts = fonts;
 exports.favicons = favicons;
+exports.modernizr = modernizr;
 
-exports.default = series(parallel(css, js, jsplugins, img, icons, fonts, favicons), watchit);
+exports.default = series(parallel(css, js, jsplugins, img, icons, fonts, favicons, modernizr), watchit);
