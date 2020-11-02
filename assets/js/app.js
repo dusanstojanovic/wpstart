@@ -2,6 +2,7 @@
 
 // const body = document.body;
 const { body } = document;
+const $ = jQuery;
 
 module.exports = function () {
     const hello = 'Hello, world';

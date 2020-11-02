@@ -14,6 +14,7 @@ const svgSprite = require('gulp-svg-sprite');
 const sourcemaps = require('gulp-sourcemaps');
 const size = require('gulp-size');
 const rename = require('gulp-rename');
+const browserSync = require('browser-sync').create();
 
 /* Error notification */
 const onError = function (err) {
@@ -40,6 +41,7 @@ function css() {
         .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('./'))
         .pipe(dest('./dist/css'))
+        .pipe(browserSync.stream())
         .pipe(notify({ message: 'CSS task complete', sound: 'tink', onLast: true }));
 }
 
@@ -124,13 +126,21 @@ function icons() {
 
 /* watch */
 function watchit() {
+    browserSync.init({
+        proxy: 'https://test.local',
+        https: {
+            key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/test.local.key',
+            cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/test.local.crt',
+        },
+    });
     watch('./assets/scss/**/*.scss', css);
     watch('./assets/img/**/*', img);
     watch('./assets/icons/**/*.svg', icons);
-    watch('./assets/js/*.js', js);
+    watch('./assets/js/*.js', js).on('change', browserSync.reload);
     watch('./assets/js/vendor/*.js', jsplugins);
     watch('./assets/fonts/**/*', fonts);
     watch('./assets/favicons/**/*', favicons);
+    watch('./**/*.php').on('change', browserSync.reload);
 }
 
 exports.css = css;
