@@ -1,24 +1,24 @@
-//  testing eslint
-
-// const body = document.body;
 const { body } = document;
 const $ = jQuery;
-
-module.exports = function () {
-    const hello = 'Hello, world';
-    const goodBye = 'Goodbye, pal';
-
-    return hello;
-};
 
 /*---------------------------------------
     toggle menu
 ---------------------------------------*/
-function toggleMenu() {
-    const toggleMenu = document.querySelectorAll('.js-show-menu');
-    console.log('aaa');
-    const foo = {
-        bar: 'baz',
-        qux: 'quux',
-    };
+function toggleMenuInit() {
+    const toggleMenu = document.querySelector('.js-toggle-menu');
+    if (toggleMenu) {
+        toggleMenu.addEventListener('click', function () {
+            body.classList.toggle('is-menuopen');
+            toggleMenu.classList.toggle('is-active');
+        });
+        window.addEventListener('resize', closeMenu);
+        function closeMenu() {
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            if (viewportWidth > 1024) {
+                body.classList.remove('is-menuopen');
+                toggleMenu.classList.remove('is-active');
+            }
+        }
+    }
 }
+toggleMenuInit();

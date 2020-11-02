@@ -1,0 +1,62 @@
+/*---------------------------------------
+    Hamburger
+---------------------------------------*/
+.c-hamburger {
+    position: absolute;
+    z-index: var(--z-everest);
+    top: 20px;
+    right: 24px;
+    transition: all 0.4s var(--base-timing-functon);
+
+    // @include bp(bp1024) {
+    //     display: none;
+    // }
+}
+.c-hamburger-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: 0;
+    position: relative;
+    vertical-align: middle;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 22px;
+        height: 2px;
+        background: #000;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        margin-top: -1px;
+        margin-left: -11px;
+        transition: all 0.4s var(--base-timing-functon);
+        transform-origin: 50% 50%;
+    }
+    &::before {
+        top: 21px;
+    }
+    &::after {
+        top: 28px;
+    }
+    &:focus {
+        outline: none;
+    }
+
+    &.is-active {
+        &::before,
+        &::after {
+            top: 50%;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}

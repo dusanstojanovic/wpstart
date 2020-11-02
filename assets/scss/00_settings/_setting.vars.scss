@@ -5,8 +5,9 @@
     --base-font-size: 16px;
     --base-line-height: 1.5;
     --base-spacing-unit: 24px;
-    --base-border-radius: 3px;
+    --base-border-radius: 4px;
     --base-transition-time: 0.075s;
+    --base-timing-functon: cubic-bezier(0.165, 0.84, 0.44, 1);
 
     /* buttons and forms vars */
     --form-border-width: 1px;

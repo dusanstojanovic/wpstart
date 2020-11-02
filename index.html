@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/dist/css/screen.min.css" />
 
         <script src="/dist/js/modernizr-custom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
         <!-- Favicons stuff -->
         <meta name="apple-mobile-web-app-title" content="SITENAME" />
@@ -30,9 +31,11 @@
 
     </head>
     <body>
-        <div class="container">
-            <div class="img">image goes here</div>
-            <div class="txt">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta porro, tempore atque, fuga ratione similique ullam doloremque quod maiores nostrum facere quisquam necessitatibus repellendus, eum officia. Illo et atque dolorem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae blanditiis rerum, obcaecati fugiat quas quidem saepe doloribus ea, dicta at doloremque facere, porro animi similique dolorem odio maiores totam labore! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam aspernatur excepturi, iusto inventore corrupti dolores hic eligendi provident debitis voluptates sequi nobis accusantium sapiente placeat, eaque laudantium incidunt? Repellat, pariatur.</div>
+
+        <div class="c-hamburger">
+            <button class="c-hamburger-btn  js-toggle-menu" type="button">
+                <span class="u-srt">Toggle menu</span>
+            </button>
         </div>
 
 
@@ -45,6 +48,7 @@
 
 
         <script src="/dist/js/plugins.min.js"></script>
+        <script src="/dist/js/app.min.js"></script>
         <script id="__bs_script__">
         //<![CDATA[
             document.write("<script async src='http://HOST:3002/browser-sync/browser-sync-client.js?v=2.26.12'><\/script>".replace('HOST', location.hostname));
