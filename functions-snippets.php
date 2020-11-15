@@ -29,6 +29,23 @@ remove_action( 'wp_head', array( $wpstart, 'meta_generator_tag' ) );
 add_filter('jpeg_quality', function($arg){return 100;});
 
 /*---------------------------------------
+    No more big images
+---------------------------------------*/
+function ed_max_image_size( $file ) {
+    $size = $file['size'];
+    $size = $size / 1024;
+    $type = $file['type'];
+    $is_image = strpos( $type, 'image' ) !== false;
+    $limit = 512;
+    $limit_output = '512kb';
+    if ( $is_image && $size > $limit ) {
+        $file['error'] = 'Image files must be smaller than ' . $limit_output;
+    }
+    return $file;
+}
+add_filter( 'wp_handle_upload_prefilter', 'ed_max_image_size' );
+
+/*---------------------------------------
     Remove ID from menu
 ---------------------------------------*/
 function wp_nav_menu_remove_attributes( $menu ){
