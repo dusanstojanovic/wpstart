@@ -48,6 +48,6 @@
     padding: clamp(32px, 8vw, 100px) 0;
     @include bp(bp1024) {
         display: block;
-        lost-center: 100% flex;
+        display: flex;
     }
 }

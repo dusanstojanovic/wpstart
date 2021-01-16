@@ -4,27 +4,105 @@
 html {
     box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {text-align: left;}
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    text-align: left;
+}
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
 
-textarea {resize: vertical;}
-textarea[contenteditable] {-webkit-appearance: none;}
+textarea {
+    resize: vertical;
+}
+textarea[contenteditable] {
+    -webkit-appearance: none;
+}
 
 code {
     line-height: 1;
-    font-family: Monaco, Consolas, "Bitstream Vera Sans Mono", "Andale Mono", "DejaVu Sans Mono", "Lucida Console", monospace;
+    font-family: Monaco, Consolas, 'Bitstream Vera Sans Mono', 'Andale Mono', 'DejaVu Sans Mono', 'Lucida Console', monospace;
     font-size: 0.9em;
 }
 
-img, svg {
+img,
+svg {
     display: inline-block;
     max-width: 100%;
     height: auto;
@@ -55,10 +133,14 @@ figure {
     max-width: 100% !important;
     margin: 0 0 1em;
 }
-figure > img {display: block;}
+figure > img {
+    display: block;
+}
 
 /* ----------- */
-object, embed, video {
+object,
+embed,
+video {
     max-width: 100%;
 }
 
@@ -69,5 +151,21 @@ textarea:focus {
     outline: none;
 }
 
-abbr[title],dfn[title] {cursor: help;}
-u,ins {text-decoration: none;}
+abbr[title],
+dfn[title] {
+    cursor: help;
+}
+u,
+ins {
+    text-decoration: none;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

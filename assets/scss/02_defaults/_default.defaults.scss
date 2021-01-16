@@ -73,6 +73,10 @@ a {
     }
 }
 
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
 small {
     font-size: 60%;
 }

@@ -1,7 +1,6 @@
 const { src, dest, watch, parallel, series } = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
-const lost = require('lost');
 const autoprefixer = require('autoprefixer');
 const minifyCSS = require('gulp-csso');
 const babel = require('gulp-babel');
@@ -33,7 +32,7 @@ function css() {
         .pipe(sourcemaps.init())
         .pipe(plumber({ errorHandler: onError }))
         .pipe(sass())
-        .pipe(postcss([lost(), autoprefixer()]))
+        .pipe(postcss([autoprefixer()]))
         .pipe(dest('./dist/css'))
         .pipe(minifyCSS())
         .pipe(size())
