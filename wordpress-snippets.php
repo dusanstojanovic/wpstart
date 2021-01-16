@@ -93,7 +93,7 @@ get_header();
     Icons
 ---------------------------------------*/
 <svg class="o-icon" role="presentation">
-    <use xlink:href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icons.svg#icon-chat"/>
+    <use xlink:href="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icons.svg#icon-chat"/>
 </svg>
 
 
@@ -176,3 +176,41 @@ get_header();
         </div>
     </div>
 </div>
+
+/*---------------------------------------
+    Related posts
+---------------------------------------*/
+<?php
+$related_query = new WP_Query(array(
+    'post_type' => 'post',
+    'category__in' => wp_get_post_categories(get_the_ID()),
+    'post__not_in' => array(get_the_ID()),
+    'posts_per_page' => 3,
+    'orderby' => 'date',
+));
+?>
+<?php if ($related_query->have_posts()) { ?>
+<div class="c-grid--3x3">
+    <?php while ($related_query->have_posts()) { ?>
+        <?php $related_query->the_post(); ?>
+        <div class="c-postcard">
+            <a href="<?php the_permalink(); ?>" class="c-postcard__thumb">
+                <?php the_post_thumbnail('project_thumb'); ?>
+            </a>
+            <ul class="c-postcard__cats  o-listcomma  u-lines--1">
+                <?php
+                $category = get_the_category();
+                $allcategory = get_the_category();
+                foreach ( $allcategory as $category ) {
+                    printf( '<li><a href="%1$s" class="c-link--bold">#%2$s</a></li>',
+                        esc_url( get_category_link( $category->term_id ) ),
+                        esc_html( $category->name )
+                    );
+                }?>
+            </ul>
+            <h3 class="c-postcard__title  c-txt--h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+        </div>
+    <?php } ?>
+</div>
+<?php wp_reset_postdata(); ?>
+<?php } ?>

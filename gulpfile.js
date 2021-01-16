@@ -115,7 +115,7 @@ function icons() {
                 mode: {
                     symbol: {
                         dest: '',
-                        sprite: 'icons-symbols.svg',
+                        sprite: 'icons.svg',
                     },
                 },
             }),
