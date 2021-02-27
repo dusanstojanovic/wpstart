@@ -34,7 +34,7 @@ function css() {
         .pipe(sass())
         .pipe(postcss([autoprefixer()]))
         .pipe(dest('./dist/css'))
-        .pipe(minifyCSS())
+        .pipe(minifyCSS({ comments: false }))
         .pipe(size())
         .pipe(size({ gzip: true }))
         .pipe(rename({ suffix: '.min' }))
@@ -94,9 +94,9 @@ function img() {
     return src('./assets/img/**/*')
         .pipe(
             imagemin([
-                imagemin.gifsicle({ interlaced: true }),
-                imagemin.mozjpeg({ quality: 75, progressive: true }),
-                imagemin.optipng({ optimizationLevel: 5 }),
+                // imagemin.gifsicle({ interlaced: true }),
+                // imagemin.mozjpeg({ quality: 75, progressive: true }),
+                // imagemin.optipng({ optimizationLevel: 5 }),
                 imagemin.svgo({
                     plugins: [{ removeViewBox: false }, { cleanupIDs: false }],
                 }),
@@ -114,7 +114,7 @@ function icons() {
                 mode: {
                     symbol: {
                         dest: '',
-                        sprite: 'icons.svg',
+                        sprite: 'icons-symbols.svg',
                     },
                 },
             }),
@@ -126,10 +126,10 @@ function icons() {
 /* watch */
 function watchit() {
     browserSync.init({
-        proxy: 'https://test.local',
+        proxy: 'https://wpstart.local',
         https: {
-            key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/test.local.key',
-            cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/test.local.crt',
+            key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/wpstart.local.key',
+            cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/wpstart.local.crt',
         },
     });
     watch('./assets/scss/**/*.scss', css);
