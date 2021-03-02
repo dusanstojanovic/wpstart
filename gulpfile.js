@@ -94,9 +94,9 @@ function img() {
     return src('./assets/img/**/*')
         .pipe(
             imagemin([
-                // imagemin.gifsicle({ interlaced: true }),
-                // imagemin.mozjpeg({ quality: 75, progressive: true }),
-                // imagemin.optipng({ optimizationLevel: 5 }),
+                imagemin.gifsicle({ interlaced: true }),
+                imagemin.mozjpeg({ quality: 75, progressive: true }),
+                imagemin.optipng({ optimizationLevel: 5 }),
                 imagemin.svgo({
                     plugins: [{ removeViewBox: false }, { cleanupIDs: false }],
                 }),
@@ -114,7 +114,7 @@ function icons() {
                 mode: {
                     symbol: {
                         dest: '',
-                        sprite: 'icons-symbols.svg',
+                        sprite: 'icons.svg',
                     },
                 },
             }),

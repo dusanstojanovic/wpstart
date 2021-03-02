@@ -186,13 +186,13 @@
 }
 /* text fonts */
 .u-txt--mainfont {
-    font-family: var(--font-stack--primary) !important;
+    font-family: var(--ff--primary) !important;
 }
 .u-txt--altfont {
-    font-family: var(--font-stack--secondary) !important;
+    font-family: var(--ff--secondary) !important;
 }
 .u-txt--monofont {
-    font-family: var(--font-stack--mono) !important;
+    font-family: var(--ff--mono) !important;
 }
 
 /*------------------------------------*\

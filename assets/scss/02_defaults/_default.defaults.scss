@@ -4,7 +4,7 @@
 html {
     font-size: var(--base-font-size);
     line-height: var(--base-line-height);
-    font-family: var(--font-stack--primary);
+    font-family: var(--ff--primary);
     font-weight: normal;
     background: #fff;
     color: var(--c-grey--dark);
@@ -35,7 +35,7 @@ h5,
 h6 {
     position: relative;
     margin: 0 0 0.4em;
-    font-family: var(--font-stack--primary);
+    font-family: var(--ff--primary);
     font-weight: normal;
     line-height: normal;
     text-rendering: optimizeLegibility;
@@ -146,13 +146,13 @@ cite {
 
 pre {
     margin: 0;
-    font-family: var(--font-stack--mono);
+    font-family: var(--ff--mono);
     padding: calc(var(--base-spacing-unit) / 2);
     font-size: 80%;
 }
 code {
     line-height: 1;
-    font-family: var(--font-stack--mono);
+    font-family: var(--ff--mono);
 }
 
 /* Form */
