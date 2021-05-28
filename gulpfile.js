@@ -50,7 +50,7 @@ function js() {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(
             babel({
-                presets: ['@babel/env'],
+                presets: ['@babel/preset-env'],
             }),
         )
         .pipe(uglify())
