@@ -45,6 +45,27 @@ $breakpoints: (
     }
 }
 
+//  Klemp (clamp)
+//  @include klemp(margin, 18px, 100px, 1000px);
+@mixin klemp($property: font-size, $size-sm: 12px, $size-lg: 24px, $resolution: 1920px) {
+    #{unquote($property)}: clamp($size-sm, ((100 / ($resolution / $size-lg)) * 1vw), $size-lg);
+}
+
+//  Klemp for font-size (clamp)
+//  @include klempfs(16px, 32px, 64px, 1920px);
+@mixin klempfs($base-size: 16px, $size-sm: 12px, $size-lg: 24px, $resolution: 1920px) {
+    $diff: ((100 / ($resolution / ($size-lg - $base-size))) * 1vw);
+    font-size: clamp($size-sm, calc(1rem + #{$diff}), $size-lg);
+}
+
+// someone's clamp font size
+@mixin fluid-type($min-vw, $max-vw, $min-value, $max-value) {
+    $factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
+    $calc-value: unquote('#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }');
+    font-size: $min-value; // Fallback for older browsers
+    font-size: clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+}
+
 //  Line-On-Sides Headers
 //  http://css-tricks.com/line-on-sides-headers/
 //  <h1 class="sidelines"><span class="sidelines__text">Heading</span></h1>
