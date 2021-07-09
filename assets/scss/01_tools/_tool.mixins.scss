@@ -1,12 +1,16 @@
-//  Breakpoints Mixin
-//  usage: @include bp(bp320)  {...}
-//  ------------------------------------------------------------
+@use 'sass:math';
+/*---------------------------------------
+    Breakpoints Mixin
+    usage: @include bp(bp320)  {...}
+---------------------------------------*/
 $breakpoints: (
     'bp320': 320px,
     'bp480': 480px,
     'bp768': 768px,
     'bp1024': 1024px,
     'bp1280': 1280px,
+    'bp1366': 1366px,
+    'bp1600': 1600px,
     'bp1920': 1920px,
 );
 @mixin bp($breakpoint) {
@@ -21,158 +25,66 @@ $breakpoints: (
     }
 }
 
-//  Anything responsive
-//  @include responsive(css_property, small_size, small_breakpoint, big_size, big_breakpoint);
-//  example: @include responsive(margin-top, 16px, 320px, 64px, 1280px);
-//  and in words: let margin top be between 16px at 320px and 64px at 1280px
-@function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
-    }
-    @return $number;
-}
-@mixin responsive($property: font-size, $size-sm: 16px, $bp-sm: 320px, $size-big: 32px, $bp-lg: 1280px) {
-    $diff-size: strip-unit($size-big - $size-sm);
-    $diff-bp: strip-unit($bp-lg - $bp-sm);
-
-    #{unquote($property)}: calc(#{$size-sm} + #{$diff-size} * ((100vw - #{$bp-sm}) / #{$diff-bp}));
-
-    @media screen and (max-width: $bp-sm) {
-        #{unquote($property)}: $size-sm;
-    }
-    @media screen and (min-width: $bp-lg) {
-        #{unquote($property)}: $size-big;
-    }
-}
-
-//  Klemp (clamp)
-//  @include klemp(margin, 18px, 100px, 1000px);
+/*---------------------------------------
+    Klemp (clamp)
+    @include klemp(margin, 18px, 100px, 1000px);
+---------------------------------------*/
 @mixin klemp($property: font-size, $size-sm: 12px, $size-lg: 24px, $resolution: 1920px) {
-    #{unquote($property)}: clamp($size-sm, ((100 / ($resolution / $size-lg)) * 1vw), $size-lg);
-}
+    #{unquote($property)}: $size-sm;
 
-//  Klemp for font-size (clamp)
-//  @include klempfs(16px, 32px, 64px, 1920px);
+    // @media (min-width: 480px) {
+    //     #{unquote($property)}: $size-sm + math.div(($size-lg - $size-sm), 4);
+    // }
+    // @media (min-width: 768px) {
+    //     #{unquote($property)}: $size-sm + math.div(($size-lg - $size-sm), 3);
+    // }
+    // @media (min-width: 1024px) {
+    //     #{unquote($property)}: $size-sm + math.div(($size-lg - $size-sm), 2);
+    // }
+    // @media (min-width: 1280px) {
+    //     #{unquote($property)}: $size-sm + math.div(($size-lg - $size-sm), 1.4);
+    // }
+    @media (min-width: $resolution) {
+        #{unquote($property)}: $size-lg;
+    }
+
+    @supports (margin: clamp(1px, 2vw, 3px)) {
+        $size-preffered: (math.div(100, math.div($resolution, $size-lg)) * 1vw);
+        #{unquote($property)}: clamp(#{$size-sm}, #{$size-preffered}, #{$size-lg});
+    }
+}
+/*---------------------------------------
+    Klemp for font-size (clamp)
+    @include klempfs(16px, 32px, 64px, 1920px);
+---------------------------------------*/
 @mixin klempfs($base-size: 16px, $size-sm: 12px, $size-lg: 24px, $resolution: 1920px) {
-    $diff: ((100 / ($resolution / ($size-lg - $base-size))) * 1vw);
-    font-size: clamp($size-sm, calc(1rem + #{$diff}), $size-lg);
+    font-size: $size-sm;
+
+    // @media (min-width: 480px) {
+    //     font-size: $size-sm + math.div(($size-lg - $size-sm), 4);
+    // }
+    // @media (min-width: 768px) {
+    //     font-size: $size-sm + math.div(($size-lg - $size-sm), 3);
+    // }
+    // @media (min-width: 1024px) {
+    //     font-size: $size-sm + math.div(($size-lg - $size-sm), 2);
+    // }
+    // @media (min-width: 1280px) {
+    //     font-size: $size-sm + math.div(($size-lg - $size-sm), 1.4);
+    // }
+    @media (min-width: $resolution) {
+        font-size: $size-lg;
+    }
+    @supports (font-size: clamp(1px, 2vw, 3px)) {
+        $diff: math.div(100, math.div($resolution, ($size-lg - $base-size))) * 1vw;
+        font-size: clamp(#{$size-sm}, calc(1rem + #{$diff}), #{$size-lg});
+    }
 }
 
 // someone's clamp font size
-@mixin fluid-type($min-vw, $max-vw, $min-value, $max-value) {
-    $factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
-    $calc-value: unquote('#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }');
-    font-size: $min-value; // Fallback for older browsers
-    font-size: clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
-}
-
-//  Line-On-Sides Headers
-//  http://css-tricks.com/line-on-sides-headers/
-//  <h1 class="sidelines"><span class="sidelines__text">Heading</span></h1>
-//  usage: @include sidelines(center, 1000px, 1px, #333, 20px, ".sidelines__text", '/path/to/ornament.png');
-//         @include sidelines(orientation, width, height, bgcolor, margin, innertext, '/path/to/ornament.png');
-//  ------------------------------------------------------------
-@mixin sidelines($orientation: center, $width: 1600px, $height: 1px, $bgcolor: $c--grey-dark, $margin: 1.25rem, $innertext: '.sidelines__text', $bgimg: '') {
-    overflow: hidden;
-    line-height: normal;
-    #{unquote($innertext)} {
-        display: inline-block;
-        position: relative;
-        &:before,
-        &:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            margin-top: ceil($height/-2);
-            width: $width;
-            height: $height;
-            background-color: $bgcolor;
-            @if $bgimg != '' {
-                background-image: url($bgimg);
-                background-position: 50% 50%;
-            }
-        }
-    }
-    @if $orientation == 'center' {
-        text-align: center;
-        #{unquote($innertext)} {
-            text-align: center;
-            &:before {
-                right: 100%;
-                margin-right: $margin;
-            }
-            &:after {
-                left: 100%;
-                margin-left: $margin;
-            }
-        }
-    }
-    @if $orientation == 'left' {
-        text-align: left;
-        #{unquote($innertext)} {
-            text-align: left;
-            &:before {
-                display: none;
-            }
-            &:after {
-                left: 100%;
-                margin-left: $margin;
-            }
-        }
-    }
-    @if $orientation == 'right' {
-        text-align: right;
-        #{unquote($innertext)} {
-            text-align: right;
-            &:before {
-                right: 100%;
-                margin-right: $margin;
-            }
-            &:after {
-                display: none;
-            }
-        }
-    }
-}
-
-//  Squircle mixin
-//  usage: .class { @include squircle(250px, #12A266); }
-//  ------------------------------------------------------------
-@mixin squircle($s: 100, $c: $main) {
-    $s: $s + 0px;
-    width: $s;
-    height: $s;
-    background: $c;
-    border-radius: $s * 0.32;
-    position: relative;
-    text-align: center;
-    line-height: $s;
-    font-size: $s / 2;
-    color: darken(saturate($c, 20%), 40);
-    vertical-align: middle;
-    display: inline-block;
-
-    * {
-        line-height: $s !important;
-        font-size: $s / 2 !important;
-        vertical-align: middle !important;
-    }
-
-    &:before,
-    &:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: $c;
-        // z-index: -1;
-        border-radius: 100%;
-        transform: scaleX(1.3) scaleY(1.075);
-        clip-path: polygon(28% 0, 72% 0, 72% 100%, 28% 100%);
-    }
-    &:after {
-        transform: scaleY(1.3) scaleX(1.075) rotate(90deg);
-    }
-}
+// @mixin fluid-type($min-vw, $max-vw, $min-value, $max-value) {
+//     $factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
+//     $calc-value: unquote('#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }');
+//     font-size: $min-value; // Fallback for older browsers
+//     font-size: clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+// }

@@ -1,5 +1,5 @@
 const { src, dest, watch, parallel, series } = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const minifyCSS = require('gulp-csso');
@@ -43,6 +43,19 @@ function css() {
         .pipe(browserSync.stream())
         .pipe(notify({ message: 'CSS task complete', sound: 'tink', onLast: true }));
 }
+function cssdist() {
+    return src('./assets/scss/*.scss')
+        .pipe(plumber({ errorHandler: onError }))
+        .pipe(sass())
+        .pipe(postcss([autoprefixer()]))
+        .pipe(minifyCSS({ comments: false }))
+        .pipe(size())
+        .pipe(size({ gzip: true }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(dest('./dist/css'))
+        .pipe(notify({ message: 'CSS task complete', sound: 'tink', onLast: true }));
+}
 
 /* main js */
 function js() {
@@ -78,11 +91,6 @@ function fonts() {
         .pipe(dest('./dist/fonts'))
         .pipe(notify({ message: 'FONTS task complete', sound: 'tink', onLast: true }));
 }
-function favicons() {
-    return src('./assets/favicons/**/*')
-        .pipe(dest('./dist/favicons'))
-        .pipe(notify({ message: 'FAVICONS task complete', sound: 'tink', onLast: true }));
-}
 function modernizr() {
     return src('./assets/js/modernizr-custom.js')
         .pipe(dest('./dist/js'))
@@ -114,7 +122,7 @@ function icons() {
                 mode: {
                     symbol: {
                         dest: '',
-                        sprite: 'icons.svg',
+                        sprite: 'icons-symbols.svg',
                     },
                 },
             }),
@@ -138,17 +146,16 @@ function watchit() {
     watch('./assets/js/*.js', js).on('change', browserSync.reload);
     watch('./assets/js/vendor/*.js', jsplugins);
     watch('./assets/fonts/**/*', fonts);
-    watch('./assets/favicons/**/*', favicons);
     watch('./**/*.php').on('change', browserSync.reload);
 }
 
 exports.css = css;
+exports.cssdist = cssdist;
 exports.img = img;
 exports.icons = icons;
 exports.js = js;
 exports.jsplugins = jsplugins;
 exports.fonts = fonts;
-exports.favicons = favicons;
 exports.modernizr = modernizr;
 
-exports.default = series(parallel(css, js, jsplugins, img, icons, fonts, favicons, modernizr), watchit);
+exports.default = series(parallel(css, js, jsplugins, img, icons, fonts, modernizr), watchit);
