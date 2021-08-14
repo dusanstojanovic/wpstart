@@ -174,3 +174,25 @@ function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
     }
     return $urls;
 }
+
+/*---------------------------------------
+    ACF options page
+---------------------------------------*/
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page();
+}
+
+/*---------------------------------------
+    ACF Color picker default colors
+---------------------------------------*/
+function ed_acf_input_admin_footer() { ?>
+    <script type="text/javascript">
+        (function($) {
+            acf.add_filter('color_picker_args', function( args, $field ){
+            args.palettes = ['#ffffff', '#f7f7f7']
+            return args;
+            });
+        })(jQuery);
+    </script>
+    <?php }
+add_action('acf/input/admin_footer', 'ed_acf_input_admin_footer');
